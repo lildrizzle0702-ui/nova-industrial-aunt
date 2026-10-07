@@ -1,0 +1,57 @@
+import { Link } from 'react-router-dom';
+import { categories } from '../config/categories';
+import { homeSections } from '../config/hero';
+import { productsInCategory } from '../lib/products';
+import { ProductMedia } from '../components/ui/Media';
+import { ArrowIcon, SectionHead } from '../components/ui/SectionHead';
+
+export function CategoryGrid() {
+  const s = homeSections.categories;
+  return (
+    <section className="section" aria-labelledby="categories-title">
+      <div className="container">
+        <SectionHead
+          index={s.index}
+          label={s.label}
+          title={s.title}
+          description={s.description}
+          cta={{ label: 'View All Products', href: '/products' }}
+          align="between"
+        />
+        <div className="category-grid">
+          {categories.map((category, i) => {
+            const representative = productsInCategory(category.slug)[0];
+            const count = productsInCategory(category.slug).length;
+            return (
+              <Link
+                key={category.id}
+                to={`/products?category=${category.slug}`}
+                className={`category-card ${i === 0 ? 'category-card--lead' : ''}`}
+              >
+                <div className="category-card__media" aria-hidden="true">
+                  {representative && (
+                    <ProductMedia
+                      slug={representative.slug}
+                      spec={representative.visual}
+                      images={representative.images}
+                      title={`${category.name} range`}
+                    />
+                  )}
+                  <span className="category-card__count mono">{count} SKUs</span>
+                </div>
+                <div className="category-card__body">
+                  <h3 className="category-card__name">{category.name}</h3>
+                  <p className="category-card__desc">{category.description}</p>
+                  <span className="arrow-link">
+                    Browse {category.shortName}
+                    <ArrowIcon />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}

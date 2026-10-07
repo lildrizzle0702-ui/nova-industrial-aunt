@@ -1,0 +1,106 @@
+/* ============================================================
+   NOVA INDUSTRIAL — DESIGN TOKENS
+   Single source of truth for the visual system.
+   Rebrand: change the palette + fonts here (and in config/theme.ts).
+   ============================================================ */
+
+:root {
+  /* ---- Color: surfaces ---- */
+  --bg: #faf9f6;
+  --surface: #ffffff;
+  --surface-muted: #f1efe9;
+  --surface-sunken: #e9e6df;
+  --surface-ink: #14181b;
+  --surface-ink-raised: #1d2327;
+
+  /* ---- Color: text ---- */
+  --text: #171b1e;
+  --text-secondary: #44494e;
+  --text-muted: #767c81;
+  --text-faint: #a3a8ab;
+  --text-on-ink: #f4f3ef;
+  --text-on-ink-secondary: #c3c6c4;
+  --text-on-ink-muted: #8d9498;
+
+  /* ---- Color: lines ---- */
+  --border: #e3e0d8;
+  --border-strong: #ccc8bf;
+  --border-ink: #2b3339;
+
+  /* ---- Color: brand ---- */
+  --primary: #1b2328;
+  --primary-hover: #2e3940;
+  --primary-on: #ffffff;
+  --accent: #c2703e;
+  --accent-hover: #a55a2e;
+  --accent-wash: #f6ebe2;
+
+  /* ---- Color: status ---- */
+  --success: #2e7d53;
+  --error: #b3402f;
+  --error-wash: #f9ebe8;
+
+  /* ---- Typography ---- */
+  --font-sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --fs-display: clamp(2.75rem, 1.2rem + 4.4vw, 4.75rem);
+  --fs-h1: clamp(2.25rem, 1.3rem + 2.8vw, 3.5rem);
+  --fs-h2: clamp(1.75rem, 1.2rem + 1.7vw, 2.5rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --fs-h4: 1.125rem;
+  --fs-body-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-caption: 0.8125rem;
+  --fs-micro: 0.6875rem;
+
+  --lh-tight: 1.08;
+  --lh-heading: 1.18;
+  --lh-body: 1.65;
+
+  --ls-tight: -0.022em;
+  --ls-heading: -0.015em;
+  --ls-label: 0.14em;
+  --ls-button: 0.08em;
+
+  /* ---- Spacing scale ---- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 80px;
+  --sp-10: 96px;
+  --sp-11: 120px;
+  --sp-12: 160px;
+
+  /* ---- Layout ---- */
+  --container: 1320px;
+  --container-text: 780px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --section-pad: clamp(64px, 8.5vw, 120px);
+  --page-hero-pad: clamp(44px, 6vw, 80px);
+  --header-h: 72px;
+
+  /* ---- Radius / lines / motion ---- */
+  --radius: 2px;
+  --radius-sm: 4px;
+  --hairline: 1px;
+  --shadow-card: 0 1px 2px rgba(20, 24, 27, 0.05), 0 8px 24px rgba(20, 24, 27, 0.06);
+  --shadow-float: 0 4px 12px rgba(20, 24, 27, 0.1), 0 16px 40px rgba(20, 24, 27, 0.14);
+
+  /* Motion tokens — every animation reads these. */
+  --dur-fast: 150ms;   /* buttons, nav, links */
+  --dur: 200ms;        /* cards, hovers */
+  --dur-slow: 300ms;   /* images, drawers, page enter */
+  --dur-page: 180ms;   /* route transition — barely perceptible */
+  --lift-page: 5px;    /* route transition offset (max 8px) */
+  --dur-reveal: 460ms; /* scroll reveal, once */
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease: var(--ease-standard); /* legacy alias */
+}
