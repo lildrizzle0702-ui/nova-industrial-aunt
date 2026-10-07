@@ -16,7 +16,7 @@ import NotFoundPage from './pages/NotFoundPage';
 export default function App() {
   return (
     <InquiryProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <VisualDefs />
         <Routes>
           <Route element={<Layout />}>
