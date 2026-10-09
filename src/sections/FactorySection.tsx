@@ -1,10 +1,12 @@
 import { factoryStats } from '../config/company';
+import { useLocale } from '../lib/i18n';
 import { homeSections } from '../config/hero';
 import { EditorialMedia } from '../components/ui/Media';
 import { SectionHead } from '../components/ui/SectionHead';
 
 export function FactorySection() {
   const s = homeSections.factory;
+  const { t } = useLocale();
   return (
     <section className="section section--ink" aria-labelledby="factory-title">
       <div className="container">
@@ -18,7 +20,7 @@ export function FactorySection() {
               onInk
             />
             <ul className="factory__points">
-              {s.points.map((point) => (
+              {[t('home.factory.points.1'), t('home.factory.points.2'), t('home.factory.points.3'), t('home.factory.points.4')].map((point) => (
                 <li key={point}>{point}</li>
               ))}
             </ul>

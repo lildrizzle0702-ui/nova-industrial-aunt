@@ -6,8 +6,10 @@ import { productBySlug } from '../lib/products';
 import { usePageMeta } from '../lib/seo';
 import { contact } from '../config/contact';
 import { quotePageMeta } from '../config/hero';
+import { useLocale } from '../lib/i18n';
 
 export default function RequestQuotePage() {
+  const { t } = useLocale();
   const [searchParams] = useSearchParams();
   const inquiry = useInquiry();
   const presetSlug = searchParams.get('product');
@@ -34,11 +36,10 @@ export default function RequestQuotePage() {
       <div className="page-hero">
         <div className="container">
           <div className="page-hero__head">
-            <p className="eyebrow">Request a Quote</p>
-            <h1 className="h1">Get pricing that matches your program.</h1>
+            <p className="eyebrow">{t('quote.label')}</p>
+            <h1 className="h1">{t('quote.title')}</h1>
             <p className="lead">
-              Send quantities, target market and certification requirements. Our sales engineers
-              reply with pricing, lead time and sample options {contact.responseTime}.
+              {t('quote.desc')}
             </p>
           </div>
           <ul className="catalogue-meta mono" aria-label="Commercial terms">
@@ -63,26 +64,24 @@ export default function RequestQuotePage() {
         </div>
         <aside className="quote-page__aside">
           <div className="info-card">
-            <h2 className="h4">What happens next</h2>
+            <h2 className="h4">{t('quote.next.title')}</h2>
             <ol className="steps-list">
               <li>
-                <span className="mono">01</span> Your inquiry summary is prepared on this page.
+                <span className="mono">01</span> {t('quote.next.1')}
               </li>
               <li>
-                <span className="mono">02</span> Send it to {contact.salesEmail} or via WhatsApp in
-                one click.
+                <span className="mono">02</span> {t('quote.next.2')}
               </li>
               <li>
-                <span className="mono">03</span> Sales engineers reply with pricing, lead time and
-                samples {contact.responseTime}.
+                <span className="mono">03</span> {t('quote.next.3')}
               </li>
               <li>
-                <span className="mono">04</span> Production-intent samples ship within 7 days.
+                <span className="mono">04</span> {t('quote.next.4')}
               </li>
             </ol>
           </div>
           <div className="info-card info-card--ink">
-            <h2 className="h4">Direct contacts</h2>
+            <h2 className="h4">{t('quote.contacts.title')}</h2>
             <p>
               <a href={`mailto:${contact.salesEmail}`}>{contact.salesEmail}</a>
             </p>

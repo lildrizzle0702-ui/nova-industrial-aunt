@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import type { Product } from '../../data/types';
 import { categoryOf, certificationsOf } from '../../lib/products';
 import { useInquiry } from '../../lib/inquiry';
+import { useLocale } from '../../lib/i18n';
+import { useDisplay } from '../../lib/display';
 import { ProductMedia } from './Media';
 import { ArrowIcon } from './SectionHead';
 
@@ -15,6 +17,8 @@ export function ProductCard({
   variant?: CardVariant;
 }) {
   const inquiry = useInquiry();
+  const { t } = useLocale();
+  const { productName, productShort, categoryShort } = useDisplay();
   const category = categoryOf(product);
   const inBasket = inquiry.contains(product.id);
   const compact = variant === 'compact';
@@ -38,7 +42,7 @@ export function ProductCard({
   const actions = (
     <div className="product-card__actions">
       <Link to={`/products/${product.slug}`} className="arrow-link">
-        View Product
+        {t('common.viewProduct')}
         <ArrowIcon />
       </Link>
       {!compact && (
@@ -52,7 +56,7 @@ export function ProductCard({
               : `Add ${product.name} to inquiry`
           }
         >
-          {inBasket ? 'In Inquiry ✓' : 'Add to Inquiry'}
+          {inBasket ? t('pdp.inBasket') + ' ✓' : t('pdp.addInquiry')}
         </button>
       )}
     </div>
@@ -66,12 +70,12 @@ export function ProductCard({
         <div className="product-card__body">
           <p className="product-card__meta mono">
             <span>{product.sku}</span>
-            <span>{category.shortName}</span>
+            <span>{categoryShort(category)}</span>
           </p>
           <h3 className="product-card__name">
-            <Link to={`/products/${product.slug}`}>{product.name}</Link>
+            <Link to={`/products/${product.slug}`}>{productName(product)}</Link>
           </h3>
-          <p className="product-card__desc">{product.shortDescription}</p>
+          <p className="product-card__desc">{productShort(product)}</p>
           <div className="product-card__certs" aria-label="Certifications">
             {certificationsOf(product)
               .slice(0, 3)
@@ -96,11 +100,11 @@ export function ProductCard({
           <span>{category.shortName}</span>
         </p>
         <h3 className="product-card__name">
-          <Link to={`/products/${product.slug}`}>{product.name}</Link>
+          <Link to={`/products/${product.slug}`}>{productName(product)}</Link>
         </h3>
-        {!compact && <p className="product-card__desc">{product.shortDescription}</p>}
+        {!compact && <p className="product-card__desc">{productShort(product)}</p>}
         {compact && (
-          <p className="product-card__desc product-card__desc--clamp">{product.shortDescription}</p>
+          <p className="product-card__desc product-card__desc--clamp">{productShort(product)}</p>
         )}
         {!compact && (
           <div className="product-card__certs" aria-label="Certifications">

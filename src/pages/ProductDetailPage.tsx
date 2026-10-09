@@ -9,6 +9,8 @@ import { resolveProductGallery, type MediaAsset } from '../config/media';
 import { ProductCard } from '../components/ui/ProductCard';
 import { ArrowIcon } from '../components/ui/SectionHead';
 import { pdpConfig } from '../config/hero';
+import { useLocale } from '../lib/i18n';
+import { useDisplay } from '../lib/display';
 
 interface GallerySlide {
   key: string;
@@ -24,6 +26,8 @@ const BASE_SLIDES: GallerySlide[] = [
 ];
 
 export default function ProductDetailPage() {
+  const { t } = useLocale();
+  const { productName, productShort, categoryName } = useDisplay();
   const { slug = '' } = useParams();
   const product = productBySlug(slug);
   const [active, setActive] = useState(0);
@@ -53,16 +57,16 @@ export default function ProductDetailPage() {
       <div className="page-hero">
         <div className="container">
           <p className="eyebrow">Error 404</p>
-          <h1 className="h1">Product not found</h1>
+          <h1 className="h1">{t('pdp.notFound')}</h1>
           <p className="lead">
-            The product you are looking for doesn't exist or may have been discontinued.
+            {t('pdp.notFoundDesc')}
           </p>
           <div className="btn-row" style={{ marginTop: 'var(--sp-6)' }}>
             <Link to="/products" className="btn btn--primary">
-              Browse Products
+              {t('common.viewProducts')}
             </Link>
             <Link to="/" className="btn btn--outline">
-              Back Home
+              {t('common.backHome')}
             </Link>
           </div>
         </div>
@@ -84,20 +88,20 @@ export default function ProductDetailPage() {
       [specBy('rated current'), specBy('rated voltage')].filter(Boolean).join(' '),
     specBy('housing material'),
   ].filter(Boolean) as string[];
-  const keydata = [...keydataParts, certs.map((c) => c.code).join(' · ')].filter(Boolean).join('  ·  ');
+  const keydata = [...keydataParts, certs.map((c) => c.code).join(' · ')].filter(Boolean).join('  /  ');
 
   return (
     <article className="pdp">
       {/* breadcrumb */}
       <nav className="breadcrumb" aria-label="Breadcrumb">
         <div className="container breadcrumb__inner">
-          <Link to="/">Home</Link>
+          <Link to="/">{t('breadcrumb.home')}</Link>
           <span aria-hidden="true">/</span>
-          <Link to="/products">Products</Link>
+          <Link to="/products">{t('breadcrumb.products')}</Link>
           <span aria-hidden="true">/</span>
-          <Link to={`/products?category=${category.slug}`}>{category.name}</Link>
+          <Link to={`/products?category=${category.slug}`}>{categoryName(category)}</Link>
           <span aria-hidden="true">/</span>
-          <span aria-current="page">{product.name}</span>
+          <span aria-current="page">{productName(product)}</span>
         </div>
       </nav>
 
@@ -114,7 +118,17 @@ export default function ProductDetailPage() {
               })),
             ];
             const slide = slides[Math.min(active, slides.length - 1)];
-            const stageTitle = `${product.name} — ${slide.label}`;
+            const slideLabels: Record<string, string> = {
+              hero: t('pdp.viewProduct'),
+              technical: t('pdp.viewTechnical'),
+              detail: t('pdp.viewDetail'),
+            };
+            const localizedSlides = slides.map((sl) => ({
+              ...sl,
+              label: slideLabels[sl.key] ?? sl.label,
+            }));
+            void slide;
+            const stageTitle = `${productName(product)} — ${slideLabels[slides[Math.min(active, slides.length - 1)].key] ?? slides[Math.min(active, slides.length - 1)].label}`;
 
             return (
               <>
@@ -145,7 +159,7 @@ export default function ProductDetailPage() {
                   )}
                 </div>
                 <div className="pdp__thumbs" role="tablist" aria-label="Product views">
-                  {slides.map((s, i) => (
+                  {localizedSlides.map((s, i) => (
                     <button
                       key={s.key}
                       type="button"
@@ -195,43 +209,43 @@ export default function ProductDetailPage() {
         <div className="pdp__summary">
           <p className="pdp__meta mono">
             <span>{product.sku}</span>
-            <span>{category.name}</span>
+            <span>{categoryName(category)}</span>
           </p>
-          <h1 className="h1 pdp__title">{product.name}</h1>
-          <p className="lead">{product.shortDescription}</p>
+          <h1 className="h1 pdp__title">{productName(product)}</h1>
+          <p className="lead">{productShort(product)}</p>
 
           <div className="pdp__actions">
             <Link to={`/request-quote?product=${product.slug}`} className="btn btn--accent btn--lg">
-              Request a Quote
+              {t('pdp.requestQuote')}
             </Link>
             <button
               type="button"
               className={`btn btn--lg ${inBasket ? 'btn--primary' : 'btn--outline'}`}
               onClick={() => (inBasket ? inquiry.openDrawer() : inquiry.add(product.id))}
             >
-              {inBasket ? 'In Inquiry Basket ✓' : 'Add to Inquiry'}
+              {inBasket ? t('pdp.inBasket') + ' ✓' : t('pdp.addInquiry')}
             </button>
           </div>
 
           <dl className="pdp__commercial">
             <div>
-              <dt className="mono">MOQ</dt>
+              <dt className="mono">{t('pdp.moq')}</dt>
               <dd>{product.moq}</dd>
             </div>
             <div>
-              <dt className="mono">Lead time</dt>
+              <dt className="mono">{t('pdp.leadTime')}</dt>
               <dd>{product.leadTime}</dd>
             </div>
             <div>
-              <dt className="mono">Finishes</dt>
+              <dt className="mono">{t('pdp.finishes')}</dt>
               <dd>{product.colors.join(' · ')}</dd>
             </div>
             <div>
-              <dt className="mono">Warranty</dt>
+              <dt className="mono">{t('pdp.warranty')}</dt>
               <dd>{product.warranty}</dd>
             </div>
             <div className="pdp__commercial--wide">
-              <dt className="mono">{pdpConfig.oemLabel}</dt>
+              <dt className="mono">{t('pdp.oem')}</dt>
               <dd>
                 {pdpConfig.oemNote} —{' '}
                 <Link to={pdpConfig.oemHref} className="text-link">
@@ -260,7 +274,7 @@ export default function ProductDetailPage() {
         <div className="container pdp__detail-grid">
           <section aria-labelledby="specs-title" className="pdp__specs">
             <p className="eyebrow">
-              <span className="mono">01</span>Technical Data
+              <span className="mono">01</span>{t('pdp.technicalData')}
             </p>
             <h2 className="h3 visually-hidden" id="specs-title">
               Specifications
@@ -283,7 +297,7 @@ export default function ProductDetailPage() {
           <div className="pdp__side">
             <section aria-labelledby="apps-title" className="pdp__apps">
               <p className="eyebrow">
-                <span className="mono">02</span>Applications
+                <span className="mono">02</span>{t('pdp.applications')}
               </p>
               <ul className="apps-list">
                 {product.applications.map((app) => (
@@ -294,7 +308,7 @@ export default function ProductDetailPage() {
 
             <section aria-labelledby="certs-title" className="pdp__certs">
               <p className="eyebrow">
-                <span className="mono">03</span>Certifications
+                <span className="mono">03</span>{t('pdp.certifications')}
               </p>
               <ul className="cert-strip">
                 {certs.map((cert) => (
@@ -304,7 +318,7 @@ export default function ProductDetailPage() {
                 ))}
               </ul>
               <p className="caption">
-                Declarations and test reports are issued per shipment. See{' '}
+                {t('pdp.certsNote')}{' '}
                 <Link to="/quality" className="text-link">
                   Quality &amp; Compliance
                 </Link>
@@ -314,7 +328,7 @@ export default function ProductDetailPage() {
 
             <section aria-labelledby="pack-title" className="pdp__packing">
               <p className="eyebrow">
-                <span className="mono">04</span>Packaging
+                <span className="mono">04</span>{t('pdp.packaging')}
               </p>
               <p className="body-sm mono pdp__packing-line">{product.packaging}</p>
             </section>
@@ -327,7 +341,7 @@ export default function ProductDetailPage() {
         <div className="container">
           <div className="pdp__overview">
             <p className="eyebrow">
-              <span className="mono">05</span>Overview
+              <span className="mono">05</span>{t('pdp.overview')}
             </p>
             <p>{product.description}</p>
           </div>
@@ -340,7 +354,7 @@ export default function ProductDetailPage() {
           <div className="section-head">
             <div className="section-head__main">
               <p className="eyebrow">Related Products</p>
-              <h2 className="h2">Pairs well with this line.</h2>
+              <h2 className="h2">{t('pdp.relatedTitle')}</h2>
             </div>
           </div>
           <div className="product-grid product-grid--4">
@@ -350,7 +364,7 @@ export default function ProductDetailPage() {
           </div>
           <div className="pdp__foot-cta">
             <Link to="/products" className="arrow-link">
-              Back to Catalogue
+              {t('pdp.backToCatalogue')}
               <ArrowIcon />
             </Link>
           </div>

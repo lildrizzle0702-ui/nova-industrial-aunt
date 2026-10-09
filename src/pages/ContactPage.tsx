@@ -5,6 +5,7 @@ import { company } from '../config/company';
 import { faqs } from '../config/certifications';
 import { isEmail, isNonEmpty, type FieldErrors } from '../lib/validation';
 import { usePageMeta } from '../lib/seo';
+import { useLocale } from '../lib/i18n';
 
 interface ContactFormState {
   name: string;
@@ -17,6 +18,7 @@ interface ContactFormState {
 const EMPTY: ContactFormState = { name: '', email: '', company: '', subject: '', message: '' };
 
 export default function ContactPage() {
+  const { t } = useLocale();
   usePageMeta({
     title: 'Contact',
     description: `Contact NOVA INDUSTRIAL — email ${contact.email}, phone ${contact.phone}, WhatsApp and factory address in Wenzhou, China. Sales replies within one business day.`,
@@ -51,7 +53,7 @@ export default function ContactPage() {
     `Name: ${form.name}`,
     `Company: ${form.company || '—'}`,
     `Email: ${form.email}`,
-    `Subject: ${form.subject || 'General inquiry'}`,
+    `Subject: ${form.subject || t('contact.form.subject.general')}`,
     '',
     form.message || '—',
     '',
@@ -76,11 +78,10 @@ export default function ContactPage() {
     <div className="contact-page">
       <div className="page-hero">
         <div className="container page-hero__head">
-          <p className="eyebrow">Contact</p>
-          <h1 className="h1">Talk to the factory floor.</h1>
+          <p className="eyebrow">{t('contact.label')}</p>
+          <h1 className="h1">{t('contact.title')}</h1>
           <p className="lead">
-            Sales engineers answer every message {contact.responseTime} — for quotations, samples,
-            OEM projects or documentation requests.
+            {t('contact.desc')}
           </p>
         </div>
       </div>
@@ -89,22 +90,22 @@ export default function ContactPage() {
         {/* Contact channels */}
         <aside className="contact-page__channels">
           <div className="info-card">
-            <h2 className="h4">Direct</h2>
+            <h2 className="h4">{t('contact.direct')}</h2>
             <ul className="contact-list">
               <li>
-                <span className="contact-list__label mono">Email</span>
+                <span className="contact-list__label mono">{t('contact.email')}</span>
                 <a href={`mailto:${contact.email}`}>{contact.email}</a>
               </li>
               <li>
-                <span className="contact-list__label mono">Sales</span>
+                <span className="contact-list__label mono">{t('contact.sales')}</span>
                 <a href={`mailto:${contact.salesEmail}`}>{contact.salesEmail}</a>
               </li>
               <li>
-                <span className="contact-list__label mono">Phone</span>
+                <span className="contact-list__label mono">{t('contact.phone')}</span>
                 <a href={`tel:${contact.phoneHref}`}>{contact.phone}</a>
               </li>
               <li>
-                <span className="contact-list__label mono">WhatsApp</span>
+                <span className="contact-list__label mono">{t('contact.whatsapp')}</span>
                 <a href={contact.whatsappHref} target="_blank" rel="noreferrer">
                   {contact.whatsapp}
                 </a>
@@ -112,7 +113,7 @@ export default function ContactPage() {
             </ul>
           </div>
           <div className="info-card">
-            <h2 className="h4">Factory address</h2>
+            <h2 className="h4">{t('contact.address')}</h2>
             <address>
               {contact.addressLines.map((line) => (
                 <p key={line}>{line}</p>
@@ -203,7 +204,7 @@ export default function ContactPage() {
                     Subject
                   </label>
                   <select id="cf-subject" value={form.subject} onChange={(e) => set('subject')(e.target.value)}>
-                    <option value="">General inquiry</option>
+                    <option value="">{t('contact.form.subject.general')}</option>
                     <option value="Quotation request">Quotation request</option>
                     <option value="Samples">Samples</option>
                     <option value="OEM / ODM project">OEM / ODM project</option>
@@ -244,8 +245,8 @@ export default function ContactPage() {
         <div className="container">
           <div className="section-head">
             <div className="section-head__main">
-              <p className="eyebrow">FAQ</p>
-              <h2 className="h2">Buyer questions, answered directly.</h2>
+              <p className="eyebrow">{t('contact.faq.label')}</p>
+              <h2 className="h2">{t('contact.faq.title')}</h2>
             </div>
           </div>
           <div className="faq-list">

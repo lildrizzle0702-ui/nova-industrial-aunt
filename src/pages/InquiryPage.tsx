@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import { QuoteRequestForm } from '../components/form/QuoteRequestForm';
 import { useInquiry, inquiryRows } from '../lib/inquiry';
 import { usePageMeta } from '../lib/seo';
+import { useLocale } from '../lib/i18n';
 import { ProductMedia } from '../components/ui/Media';
 
 export default function InquiryPage() {
+  const { t } = useLocale();
   const inquiry = useInquiry();
   const rows = inquiryRows(inquiry.lines);
 
@@ -19,11 +21,10 @@ export default function InquiryPage() {
     <div className="inquiry-page">
       <div className="page-hero">
         <div className="container page-hero__head">
-          <p className="eyebrow">Inquiry Basket</p>
-          <h1 className="h1">One request. One quotation.</h1>
+          <p className="eyebrow">{t('inquiry.label')}</p>
+          <h1 className="h1">{t('inquiry.title')}</h1>
           <p className="lead">
-            Collect the products you need, set target quantities, and send the complete list to our
-            sales engineers in a single step.
+            {t('inquiry.desc')}
           </p>
         </div>
       </div>
@@ -32,17 +33,16 @@ export default function InquiryPage() {
         {rows.length === 0 ? (
           <div className="empty-state">
             <p className="empty-state__glyph mono">Ø</p>
-            <h2 className="h3">Your inquiry basket is empty</h2>
+            <h2 className="h3">{t('inquiry.empty.title')}</h2>
             <p className="body-sm">
-              Add products while you browse the catalogue, then return here to set quantities and
-              request a quotation for the full list.
+              {t('inquiry.empty.desc')}
             </p>
             <div className="btn-row">
               <Link to="/products" className="btn btn--primary">
-                Browse Products
+                {t('inquiry.empty.browse')}
               </Link>
               <Link to="/request-quote" className="btn btn--outline">
-                General Quote Request
+                {t('inquiry.empty.quote')}
               </Link>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function InquiryPage() {
                 </div>
               ))}
               {rows.length > 4 && (
-                <p className="caption mono">+{rows.length - 4} more in list</p>
+                <p className="caption mono">+{rows.length - 4} {t('inquiry.moreInList')}</p>
               )}
             </div>
             <QuoteRequestForm />

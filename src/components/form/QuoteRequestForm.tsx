@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { contact } from '../../config/contact';
 import { certifications } from '../../config/certifications';
+import { useLocale } from '../../lib/i18n';
 import { brand } from '../../config/brand';
 import { inquiryRows, inquirySummaryText, useInquiry } from '../../lib/inquiry';
 import { isEmail, isNonEmpty, type FieldErrors } from '../../lib/validation';
@@ -18,18 +19,18 @@ const EMPTY_FORM: InquiryContactForm = {
   message: '',
 };
 
-const certificationOptions = [
-  { value: '', label: 'No specific requirement' },
+const certificationOptions = (t: (k: string) => string) => [
+  { value: '', label: t('quote.form.certification.none') },
   ...certifications.map((c) => ({ value: c.code, label: `${c.code} - ${c.name}` })),
   { value: 'Other / advise', label: 'Other - advise us' },
 ];
 
-const packagingOptions = [
-  { value: '', label: 'Standard export packing' },
-  { value: 'Retail-ready blister', label: 'Retail-ready blister' },
-  { value: 'Retail box', label: 'Retail box' },
-  { value: 'Constructor pack', label: 'Constructor pack' },
-  { value: 'Plain export carton', label: 'Plain export carton' },
+const packagingOptions = (t: (k: string) => string) => [
+  { value: '', label: t('quote.form.packaging.standard') },
+  { value: 'Retail-ready blister', label: t('quote.form.packaging.blister') },
+  { value: 'Retail box', label: t('quote.form.packaging.box') },
+  { value: 'Constructor pack', label: t('quote.form.packaging.constructor') },
+  { value: 'Plain export carton', label: t('quote.form.packaging.plain') },
 ];
 
 /**
@@ -39,6 +40,7 @@ const packagingOptions = [
  * buyer sends from their own email/WhatsApp client, or copies for CRM entry.
  */
 export function QuoteRequestForm({ note }: { note?: string }) {
+  const { t } = useLocale();
   const inquiry = useInquiry();
   const rows = inquiryRows(inquiry.lines);
   const [form, setForm] = useState<InquiryContactForm>(EMPTY_FORM);
@@ -157,7 +159,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
       {rows.length > 0 && (
         <section className="quote-group" aria-label="Products in this inquiry">
           <p className="quote-group__label mono">
-            <span className="quote-group__index">02</span>Project — selected products
+            <span className="quote-group__index">{groupNo.project}</span>{t('quote.group.project')}
           </p>
           <ul className="quote-basket">
             {rows.map(({ product, quantity }) => (
@@ -193,8 +195,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
             ))}
           </ul>
           <p className="form-note">
-            Quantities are targets for quotation — final pricing is calculated per finish and
-            certification requirements.
+            {t('quote.form.qtyNote')}
           </p>
         </section>
       )}
@@ -203,12 +204,12 @@ export function QuoteRequestForm({ note }: { note?: string }) {
 
       <section className="quote-group" aria-label="Contact details">
         <p className="quote-group__label mono">
-          <span className="quote-group__index">{groupNo.contact}</span>Contact
+          <span className="quote-group__index">{groupNo.contact}</span>{t('quote.group.contact')}
         </p>
         <div className="form-grid">
           <div className={`field ${errors.name ? 'field--error' : ''}`}>
             <label className="field__label" htmlFor="qf-name">
-              Name <span className="field__req" aria-hidden="true">*</span>
+              {t('quote.form.name')} <span className="field__req" aria-hidden="true">*</span>
             </label>
             <input
               id="qf-name"
@@ -239,7 +240,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
 
           <div className={`field ${errors.email ? 'field--error' : ''}`}>
             <label className="field__label" htmlFor="qf-email">
-              Email <span className="field__req" aria-hidden="true">*</span>
+              {t('quote.form.email')} <span className="field__req" aria-hidden="true">*</span>
             </label>
             <input
               id="qf-email"
@@ -257,7 +258,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
 
           <div className="field">
             <label className="field__label" htmlFor="qf-country">
-              Country / Market
+              {t('quote.form.country')}
             </label>
             <input
               id="qf-country"
@@ -273,12 +274,12 @@ export function QuoteRequestForm({ note }: { note?: string }) {
 
       <section className="quote-group" aria-label="Requirements">
         <p className="quote-group__label mono">
-          <span className="quote-group__index">{groupNo.requirements}</span>Requirements
+          <span className="quote-group__index">{groupNo.requirements}</span>{t('quote.group.requirements')}
         </p>
         <div className="form-grid">
           <div className="field">
             <label className="field__label" htmlFor="qf-certification">
-              Certification target
+              {t('quote.form.certification')}
             </label>
             <select
               id="qf-certification"
@@ -286,7 +287,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
               value={form.certification}
               onChange={(e) => set('certification')(e.target.value)}
             >
-              {certificationOptions.map((opt) => (
+              {certificationOptions(t).map((opt) => (
                 <option key={opt.value} value={opt.value}>
                   {opt.label}
                 </option>
@@ -296,7 +297,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
 
           <div className="field">
             <label className="field__label" htmlFor="qf-packaging">
-              Packaging
+              {t('quote.form.packaging')}
             </label>
             <select
               id="qf-packaging"
@@ -304,7 +305,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
               value={form.packaging}
               onChange={(e) => set('packaging')(e.target.value)}
             >
-              {packagingOptions.map((opt) => (
+              {packagingOptions(t).map((opt) => (
                 <option key={opt.value} value={opt.value}>
                   {opt.label}
                 </option>
@@ -314,7 +315,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
 
           <div className="field form-grid__full">
             <label className="field__label" htmlFor="qf-message">
-              Message
+              {t('quote.form.message')}
             </label>
             <textarea
               id="qf-message"
@@ -322,7 +323,7 @@ export function QuoteRequestForm({ note }: { note?: string }) {
               rows={5}
               value={form.message}
               onChange={(e) => set('message')(e.target.value)}
-              placeholder="Delivery terms, OEM requirements, project timelines…"
+              placeholder={t('quote.form.messagePlaceholder')}
             />
           </div>
         </div>
@@ -330,11 +331,10 @@ export function QuoteRequestForm({ note }: { note?: string }) {
 
       <div className="quote-form__submit">
         <button type="submit" className="btn btn--accent btn--lg">
-          Submit Inquiry
+          {t('quote.form.submit')}
         </button>
         <p className="form-note">
-          No account needed. Your inquiry is prepared as a complete summary — nothing is sent
-          without your confirmation.
+          {t('quote.form.note')}
         </p>
       </div>
     </form>

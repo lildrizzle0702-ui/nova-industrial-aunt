@@ -104,8 +104,14 @@ export interface Category {
   id: string;
   slug: string;
   name: string;
+  /** Chinese display name — used when locale is zh. */
+  nameZh?: string;
   shortName: string;
+  /** Chinese short name — used when locale is zh. */
+  shortNameZh?: string;
   description: string;
+  /** Chinese description — used when locale is zh. */
+  descriptionZh?: string;
   longDescription: string;
   keywords: string[];
 }
@@ -145,9 +151,13 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
+  /** Chinese display name — used when locale is zh. */
+  nameZh?: string;
   sku: string;
   categoryId: string;
   shortDescription: string;
+  /** Chinese short description — used when locale is zh. */
+  shortDescriptionZh?: string;
   description: string;
   features: string[];
   specifications: SpecRow[];

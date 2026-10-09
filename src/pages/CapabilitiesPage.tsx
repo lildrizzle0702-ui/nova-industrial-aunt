@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { capabilities } from '../config/certifications';
 import { factoryMediaStrip } from '../config/about';
-import { factoryStats } from '../config/company';
 import { EditorialMedia } from '../components/ui/Media';
 import { ArrowIcon } from '../components/ui/SectionHead';
 import { usePageMeta } from '../lib/seo';
+import { useLocale } from '../lib/i18n';
 
 const PROCESS = [
   { step: '01', title: 'Drawing & tooling review', body: 'Your drawing or sample is reviewed by a project engineer; materials, shutters and terminals confirmed in writing.' },
@@ -16,6 +16,7 @@ const PROCESS = [
 ];
 
 export default function CapabilitiesPage() {
+  const { t } = useLocale();
   usePageMeta({
     title: 'Capabilities',
     description:
@@ -27,12 +28,10 @@ export default function CapabilitiesPage() {
     <div className="capabilities-page">
       <div className="page-hero">
         <div className="container page-hero__head">
-          <p className="eyebrow">Capabilities</p>
-          <h1 className="h1">Six disciplines. One production plan.</h1>
+          <p className="eyebrow">{t('capabilities.label')}</p>
+          <h1 className="h1">{t('capabilities.title')}</h1>
           <p className="lead">
-            Every capability below runs inside our Wenzhou facility — {factoryStats[2].value} m²,{' '}
-            {factoryStats[3].value} annual output, {factoryStats[0].value} years of accumulated
-            tooling know-how.
+            {t('capabilities.desc')}
           </p>
         </div>
       </div>
@@ -106,20 +105,19 @@ export default function CapabilitiesPage() {
       <div className="section">
         <div className="container cta-band cta-band--flat">
           <div>
-            <p className="eyebrow">Next step</p>
-            <h2 className="h2">Send a sample or a drawing. We take it from there.</h2>
+            <p className="eyebrow">{t('capabilities.cta.label')}</p>
+            <h2 className="h2">{t('capabilities.cta.title')}</h2>
             <p className="cta-band__desc">
-              Feasibility answers within two business days; production-intent samples within seven
-              days of sign-off.
+              {t('capabilities.cta.desc')}
             </p>
           </div>
           <div className="cta-band__actions">
             <Link to="/request-quote" className="btn btn--accent btn--lg">
-              Discuss Your Project
+              {t('capabilities.cta.discuss')}
               <ArrowIcon />
             </Link>
             <Link to="/quality" className="btn btn--outline btn--lg">
-              Quality &amp; Compliance
+              {t('capabilities.cta.quality')}
             </Link>
           </div>
         </div>

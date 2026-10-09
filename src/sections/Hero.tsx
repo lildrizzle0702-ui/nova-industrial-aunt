@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { hero } from '../config/hero';
+import { useLocale } from '../lib/i18n';
 import { EditorialMedia } from '../components/ui/Media';
 
 export function Hero() {
+  const { t } = useLocale();
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="container hero__inner">
@@ -24,7 +26,7 @@ export function Hero() {
               {hero.secondaryCta.label}
             </Link>
           </div>
-          <p className="hero__footnote mono">{hero.footnote}</p>
+          <p className="hero__footnote mono">{t('home.hero.footnote')}</p>
         </div>
         <div className="hero__visual" aria-hidden="true">
           <EditorialMedia subject="hero" title="" caption={hero.visualCaption} />

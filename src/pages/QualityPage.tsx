@@ -3,6 +3,7 @@ import { certifications } from '../config/certifications';
 import { EditorialMedia } from '../components/ui/Media';
 import { ArrowIcon } from '../components/ui/SectionHead';
 import { usePageMeta } from '../lib/seo';
+import { useLocale } from '../lib/i18n';
 
 const QC_PROCESS = [
   { title: 'Incoming materials', body: 'Resin, contacts and steel verified against spec sheets; batch samples kept for the life of the program.' },
@@ -14,6 +15,7 @@ const QC_PROCESS = [
 ];
 
 export default function QualityPage() {
+  const { t } = useLocale();
   usePageMeta({
     title: 'Quality & Compliance',
     description:
@@ -25,10 +27,10 @@ export default function QualityPage() {
     <div className="quality-page">
       <div className="page-hero">
         <div className="container page-hero__head">
-          <p className="eyebrow">Quality &amp; Compliance</p>
-          <h1 className="h1">Defects are a process problem, not a people problem.</h1>
+          <p className="eyebrow">{t('quality.label')}</p>
+          <h1 className="h1">{t('quality.title')}</h1>
           <p className="lead">
-            Our quality philosophy is architectural: fixtures that cannot be loaded wrong, stations
+            {t('quality.desc')}
             that cannot skip a test, batches that cannot ship without records. The result is a
             98.6% first-pass rate and warranty claims under 0.2%.
           </p>
@@ -38,7 +40,7 @@ export default function QualityPage() {
       <div className="container section">
         <div className="about-intro">
           <div>
-            <h2 className="h2">The QC process, station by station.</h2>
+            <h2 className="h2">{t('quality.process.title')}</h2>
             <ol className="qc-list">
               {QC_PROCESS.map((stage, i) => (
                 <li key={stage.title} className="qc-list__item">
@@ -61,8 +63,8 @@ export default function QualityPage() {
         <div className="container">
           <div className="section-head">
             <div className="section-head__main">
-              <p className="eyebrow">Certifications</p>
-              <h2 className="h2">Paperwork your import desk can actually use.</h2>
+              <p className="eyebrow">{t('quality.cert.label')}</p>
+              <h2 className="h2">{t('quality.cert.title')}</h2>
             </div>
           </div>
           <div className="cert-grid">
@@ -76,8 +78,7 @@ export default function QualityPage() {
             ))}
           </div>
           <p className="form-note cert-grid__note">
-            Declarations of Conformity, type-test reports and ISO certificates are issued with every
-            shipment on request — or request them with your quote.
+            {t('quality.cert.note')}
           </p>
         </div>
       </div>
@@ -85,20 +86,19 @@ export default function QualityPage() {
       <div className="section">
         <div className="container cta-band cta-band--flat">
           <div>
-            <p className="eyebrow">Testing data</p>
-            <h2 className="h2">Ask for the batch report with your samples.</h2>
+            <p className="eyebrow">{t('quality.cta.label')}</p>
+            <h2 className="h2">{t('quality.cta.title')}</h2>
             <p className="cta-band__desc">
-              Every sample shipment includes the endurance and dielectric results for its production
-              batch.
+              {t('quality.cta.desc')}
             </p>
           </div>
           <div className="cta-band__actions">
             <Link to="/request-quote" className="btn btn--accent btn--lg">
-              Request a Quote
+              {t('quality.cta.quote')}
               <ArrowIcon />
             </Link>
             <Link to="/products" className="btn btn--outline btn--lg">
-              Browse Products
+              {t('quality.cta.browse')}
             </Link>
           </div>
         </div>

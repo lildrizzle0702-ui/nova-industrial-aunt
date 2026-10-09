@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ command }) => ({
-  // Project site: assets must resolve under /nova-industrial-template/ on
-  // GitHub Pages, while dev server stays at the root.
-  base: command === 'build' ? '/nova-industrial-template/' : '/',
+// Root path on Vercel (VERCEL env var is set automatically on Vercel),
+// sub-path /nova-industrial-template/ everywhere else (GitHub Pages project site).
+const base = process.env.VERCEL ? '/' : '/nova-industrial-template/';
+
+export default defineConfig({
+  base,
   plugins: [react()],
   server: {
     port: 5180,
@@ -14,4 +16,4 @@ export default defineConfig(({ command }) => ({
     port: 5180,
     host: true,
   },
-}));
+});

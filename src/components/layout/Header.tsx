@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { navigation } from '../../config/navigation';
 import { useInquiry } from '../../lib/inquiry';
+import { useLocale } from '../../lib/i18n';
 import { Logo } from '../ui/Logo';
 
 function BasketIcon() {
@@ -19,8 +20,20 @@ function BasketIcon() {
   );
 }
 
+function navKey(href: string): string {
+  const map: Record<string, string> = {
+    '/products': 'nav.products',
+    '/capabilities': 'nav.capabilities',
+    '/quality': 'nav.quality',
+    '/about': 'nav.about',
+    '/contact': 'nav.contact',
+  };
+  return map[href] ?? 'nav.products';
+}
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t, locale, setLocale } = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const inquiry = useInquiry();
   const location = useLocation();
@@ -82,18 +95,27 @@ export function Header() {
                 `site-nav__link ${isActive && item.href !== '/' ? 'is-active' : ''}`
               }
             >
-              {item.label}
+              {t(navKey(item.href))}
             </NavLink>
           ))}
         </nav>
 
         <div className="site-header__actions">
-          <Link to="/inquiry" className="basket-btn" aria-label={`Inquiry basket, ${inquiry.count} item${inquiry.count === 1 ? '' : 's'}`}>
+          <button
+            type="button"
+            className="lang-toggle"
+            onClick={() => setLocale(locale === 'en' ? 'zh' : 'en')}
+            aria-label={t('nav.language')}
+            title={t('nav.language')}
+          >
+            {locale === 'en' ? '中文' : 'EN'}
+          </button>
+          <Link to="/inquiry" className="basket-btn" aria-label={t('drawer.title') + ', ' + inquiry.count}>
             <BasketIcon />
             {inquiry.count > 0 && <span className="basket-btn__count mono">{inquiry.count}</span>}
           </Link>
           <Link to={navigation.headerCta.href} className="btn btn--primary site-header__cta">
-            {navigation.headerCta.label}
+            {t('nav.quote')}
           </Link>
           <button
             ref={menuButtonRef}
@@ -134,10 +156,10 @@ export function Header() {
           </nav>
           <div className="mobile-menu__foot">
             <Link to={navigation.headerCta.href} className="btn btn--accent btn--block" tabIndex={menuOpen ? 0 : -1}>
-              {navigation.headerCta.label}
+              {t('nav.quote')}
             </Link>
             <Link to="/inquiry" className="btn btn--on-ink btn--block" tabIndex={menuOpen ? 0 : -1}>
-              Inquiry Basket ({inquiry.count})
+              {t('drawer.title')} ({inquiry.count})
             </Link>
           </div>
         </div>,

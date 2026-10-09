@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { capabilities } from '../config/certifications';
+import { useLocale } from '../lib/i18n';
 import { homeSections } from '../config/hero';
 import { SectionHead } from '../components/ui/SectionHead';
 
 export function CapabilitiesSection() {
   const s = homeSections.capabilities;
+  const { t } = useLocale();
   return (
     <section className="section" aria-labelledby="capabilities-title">
       <div className="container">
@@ -13,7 +15,7 @@ export function CapabilitiesSection() {
           label={s.label}
           title={s.title}
           description={s.description}
-          cta={{ label: 'All Capabilities', href: '/capabilities' }}
+          cta={{ label: t('home.cap.viewAll'), href: '/capabilities' }}
           align="between"
         />
         <div className="capability-grid">

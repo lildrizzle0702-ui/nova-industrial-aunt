@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { homeSections } from '../config/hero';
+import { useLocale } from '../lib/i18n';
 import { ArrowIcon } from '../components/ui/SectionHead';
 
 export function OemSection() {
   const s = homeSections.oem;
+  const { t } = useLocale();
   return (
     <section className="section section--muted" id="oem" aria-labelledby="oem-title">
       <div className="container">
@@ -18,7 +20,7 @@ export function OemSection() {
             </h2>
             <p className="lead">{s.description}</p>
             <Link to="/request-quote" className="btn btn--primary">
-              Discuss Your Project
+              {t('home.oem.cta')}
               <ArrowIcon />
             </Link>
           </div>

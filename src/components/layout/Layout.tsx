@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { InquiryDrawer } from './InquiryDrawer';
+import { useLocale } from '../../lib/i18n';
 
 /** Restore scroll on route change (Browser router keeps SPA state). */
 function ScrollToTop() {
@@ -48,6 +49,7 @@ function useRevealObserver(pathname: string) {
 
 export function Layout() {
   const { pathname } = useLocation();
+  const { t } = useLocale();
   const [entered, setEntered] = useState(false);
 
   useEffect(() => {
@@ -63,7 +65,7 @@ export function Layout() {
   return (
     <>
       <a href="#main" className="skip-link">
-        Skip to content
+        {t('common.skipToContent')}
       </a>
       <ScrollToTop />
       <Header />

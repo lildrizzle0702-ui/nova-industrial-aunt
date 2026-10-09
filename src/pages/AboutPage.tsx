@@ -5,12 +5,14 @@ import { factSheet, manufacturingProcess, milestones } from '../config/about';
 import { EditorialMedia } from '../components/ui/Media';
 import { ArrowIcon, SectionHead } from '../components/ui/SectionHead';
 import { usePageMeta } from '../lib/seo';
+import { useLocale } from '../lib/i18n';
 
 /**
  * Story page — narrative hero with a factory visual so the first screen
  * reads as "editorial whitespace with a subject", not empty space.
  */
 export default function AboutPage() {
+  const { t } = useLocale();
   usePageMeta({
     title: 'About',
     description:
@@ -23,9 +25,9 @@ export default function AboutPage() {
       <div className="page-hero page-hero--narrative">
         <div className="container about-hero">
           <div className="about-hero__copy">
-            <p className="eyebrow">About NOVA INDUSTRIAL</p>
+            <p className="eyebrow">{t('about.label')}</p>
             <h1 className="h1">
-              A factory that owns its process — from mold steel to export carton.
+              {t('about.hero.title')}
             </h1>
             <p className="lead">
               {company.legalName} has manufactured wiring devices in Wenzhou since{' '}
@@ -51,8 +53,8 @@ export default function AboutPage() {
         <div className="about-intro">
           <div data-reveal>
             <SectionHead
-              label="The Company"
-              title="Engineering-grade manufacturing, distributor-grade reliability."
+              label={t('about.company.label')}
+              title={t('about.company.title')}
             />
             <div className="about-intro__copy">
               <p>
@@ -85,9 +87,9 @@ export default function AboutPage() {
       <div className="section section--muted">
         <div className="container">
           <SectionHead
-            label="Manufacturing Process"
-            title="Seven stages, all inside our walls."
-            description="The sequence below is the whole product path. Because no stage is subcontracted, quality data stays attached to the batch from steel to carton."
+            label={t('about.process.label')}
+            title={t('about.process.title')}
+            description={t('about.process.desc')}
           />
           <ol className="mfg-process">
             {manufacturingProcess.map((stage) => (
@@ -122,8 +124,8 @@ export default function AboutPage() {
           </div>
           <div className="about-markets__copy" data-reveal>
             <SectionHead
-              label="Global Markets"
-              title="Shipping to 40+ markets, with the paperwork to match."
+              label={t('about.markets.label')}
+              title={t('about.markets.title')}
             />
             <ul className="markets-list">
               {company.markets.map((market) => (
@@ -152,7 +154,7 @@ export default function AboutPage() {
 
       <div className="section section--muted">
         <div className="container">
-          <SectionHead label="Milestones" title="Twenty years, in six decisions." />
+          <SectionHead label={t('about.milestones.label')} title={t('about.milestones.title')} />
           <ol className="timeline">
             {milestones.map((entry) => (
               <li key={entry.year} className="timeline__item">
@@ -167,18 +169,18 @@ export default function AboutPage() {
       <section className="section section--ink">
         <div className="container cta-band cta-band--flat">
           <div>
-            <p className="eyebrow eyebrow--ink">OEM / ODM</p>
-            <h2 className="h2">Put our production line behind your brand.</h2>
+            <p className="eyebrow eyebrow--ink">{t('about.cta.label')}</p>
+            <h2 className="h2">{t('about.cta.title')}</h2>
             <p className="cta-band__desc">
-              Private label from 1,000 units per finish, ODM platform modifications from 3,000 pcs.
+              {t('about.cta.desc')}
             </p>
           </div>
           <div className="cta-band__actions">
             <Link to="/capabilities#oem" className="btn btn--on-ink btn--lg">
-              Explore Capabilities
+              {t('about.cta.explore')}
             </Link>
             <Link to="/request-quote" className="btn btn--accent btn--lg">
-              Discuss Your Project
+              {t('about.cta.discuss')}
               <ArrowIcon />
             </Link>
           </div>

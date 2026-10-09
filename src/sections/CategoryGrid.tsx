@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { categories } from '../config/categories';
+import { useLocale } from '../lib/i18n';
+import { useDisplay } from '../lib/display';
 import { homeSections } from '../config/hero';
 import { productsInCategory } from '../lib/products';
 import { ProductMedia } from '../components/ui/Media';
@@ -7,6 +9,8 @@ import { ArrowIcon, SectionHead } from '../components/ui/SectionHead';
 
 export function CategoryGrid() {
   const s = homeSections.categories;
+  const { t } = useLocale();
+  const { categoryName, categoryDesc, categoryShort } = useDisplay();
   return (
     <section className="section" aria-labelledby="categories-title">
       <div className="container">
@@ -15,7 +19,7 @@ export function CategoryGrid() {
           label={s.label}
           title={s.title}
           description={s.description}
-          cta={{ label: 'View All Products', href: '/products' }}
+          cta={{ label: t('common.viewAllProducts'), href: '/products' }}
           align="between"
         />
         <div className="category-grid">
@@ -37,13 +41,13 @@ export function CategoryGrid() {
                       title={`${category.name} range`}
                     />
                   )}
-                  <span className="category-card__count mono">{count} SKUs</span>
+                  <span className="category-card__count mono">{count} {t('common.skus')}</span>
                 </div>
                 <div className="category-card__body">
-                  <h3 className="category-card__name">{category.name}</h3>
-                  <p className="category-card__desc">{category.description}</p>
+                  <h3 className="category-card__name">{categoryName(category)}</h3>
+                  <p className="category-card__desc">{categoryDesc(category)}</p>
                   <span className="arrow-link">
-                    Browse {category.shortName}
+                    {t('home.cat.browse')} {categoryShort(category)}
                     <ArrowIcon />
                   </span>
                 </div>

@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { homeSections } from '../config/hero';
+import { useLocale } from '../lib/i18n';
 import { EditorialMedia } from '../components/ui/Media';
 import { ArrowIcon } from '../components/ui/SectionHead';
 
 /** Compact data-band: export facts beside the logistics visual. */
 export function ExportSection() {
   const s = homeSections.export;
+  const { t } = useLocale();
   return (
     <section className="section section--muted" aria-labelledby="export-title">
       <div className="container">
@@ -20,7 +22,7 @@ export function ExportSection() {
             </h2>
             <p className="body-sm export__desc">{s.description}</p>
             <Link to="/about" className="arrow-link">
-              About the Company
+              {t('home.export.about')}
               <ArrowIcon />
             </Link>
           </div>

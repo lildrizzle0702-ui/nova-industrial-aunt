@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { certifications } from '../config/certifications';
 import { homeSections } from '../config/hero';
+import { useLocale } from '../lib/i18n';
 import { EditorialMedia } from '../components/ui/Media';
 import { ArrowIcon, SectionHead } from '../components/ui/SectionHead';
 
 export function QualitySection() {
   const s = homeSections.quality;
+  const { t } = useLocale();
   return (
     <section className="section" aria-labelledby="quality-title">
       <div className="container">
@@ -23,7 +25,7 @@ export function QualitySection() {
               ))}
             </ul>
             <Link to="/quality" className="arrow-link">
-              Quality & Certifications
+              {t('home.quality.link')}
               <ArrowIcon />
             </Link>
           </div>

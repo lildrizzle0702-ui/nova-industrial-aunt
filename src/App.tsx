@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { InquiryProvider } from './lib/inquiry';
+import { LocaleProvider } from './lib/i18n';
+import { catalog } from './lib/catalog';
 import { Layout } from './components/layout/Layout';
 import { VisualDefs } from './components/visuals/ProductVisual';
 import HomePage from './pages/HomePage';
@@ -15,8 +17,9 @@ import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
   return (
-    <InquiryProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <LocaleProvider catalog={catalog}>
+      <InquiryProvider>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
         <VisualDefs />
         <Routes>
           <Route element={<Layout />}>
@@ -32,7 +35,8 @@ export default function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
-    </InquiryProvider>
+        </BrowserRouter>
+      </InquiryProvider>
+    </LocaleProvider>
   );
 }
