@@ -370,6 +370,23 @@ export const catalog: Record<string, { en: string; zh: string }> = {
   'inquiry.empty.quote': { en: 'General Quote Request', zh: '通用询价' },
   'inquiry.moreInList': { en: 'more in list', zh: '个产品' },
 
+  /* ---------- Compare ---------- */
+  'compare.label': { en: 'Product Comparison', zh: '产品对比' },
+  'compare.title': { en: 'Compare side by side.', zh: '并排对比。' },
+  'compare.desc': { en: 'Select up to three products to compare specifications, MOQ, certifications and applications.', zh: '最多选择三款产品，并排对比规格、起订量、认证与应用。' },
+  'compare.needTwo': { en: 'Select at least two products from the catalogue to compare.', zh: '请在目录中至少选择两款产品进行对比。' },
+  'compare.add': { en: 'Compare', zh: '对比' },
+  'compare.selected': { en: 'In compare', zh: '已加入对比' },
+  'compare.commercial': { en: 'Commercial', zh: '商务条款' },
+  'compare.certifications': { en: 'Certifications', zh: '认证' },
+  'compare.applications': { en: 'Applications', zh: '应用场景' },
+
+  /* ---------- SKU quick jump ---------- */
+  'skuStrip.label': { en: 'Jump to SKU', zh: '按 SKU 跳转' },
+
+  /* ---------- Quote summary PDF ---------- */
+  'quote.success.pdf': { en: 'Download PDF', zh: '下载 PDF' },
+
   /* ---------- 404 ---------- */
   '404.code': { en: '404', zh: '404' },
   '404.title': { en: "This circuit doesn't connect.", zh: '此页面不存在。' },

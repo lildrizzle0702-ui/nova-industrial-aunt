@@ -14,6 +14,7 @@ import ContactPage from './pages/ContactPage';
 import RequestQuotePage from './pages/RequestQuotePage';
 import InquiryPage from './pages/InquiryPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ComparePage from './pages/ComparePage';
 
 export default function App() {
   return (
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="contact" element={<ContactPage />} />
             <Route path="request-quote" element={<RequestQuotePage />} />
             <Route path="inquiry" element={<InquiryPage />} />
+            <Route path="compare" element={<ComparePage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

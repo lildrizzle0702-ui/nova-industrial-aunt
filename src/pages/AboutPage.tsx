@@ -12,7 +12,8 @@ import { useLocale } from '../lib/i18n';
  * reads as "editorial whitespace with a subject", not empty space.
  */
 export default function AboutPage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === 'zh';
   usePageMeta({
     title: 'About',
     description:
@@ -96,7 +97,7 @@ export default function AboutPage() {
               <li key={stage.step} className="mfg-process__item">
                 <span className="mfg-process__step mono">{stage.step}</span>
                 <h3 className="h4">{stage.title}</h3>
-                <p className="body-sm">{stage.body}</p>
+                <p className="body-sm">{isZh && stage.bodyZh ? stage.bodyZh : stage.body}</p>
               </li>
             ))}
           </ol>
@@ -159,7 +160,7 @@ export default function AboutPage() {
             {milestones.map((entry) => (
               <li key={entry.year} className="timeline__item">
                 <span className="timeline__year mono">{entry.year}</span>
-                <p className="body-sm">{entry.text}</p>
+                <p className="body-sm">{isZh && entry.textZh ? entry.textZh : entry.text}</p>
               </li>
             ))}
           </ol>

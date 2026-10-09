@@ -5,7 +5,7 @@ import { ArrowIcon } from '../components/ui/SectionHead';
 import { usePageMeta } from '../lib/seo';
 import { useLocale } from '../lib/i18n';
 
-const QC_PROCESS = [
+const QC_PROCESS: { title: string; body: string; bodyZh?: string }[] = [
   { title: 'Incoming materials', body: 'Resin, contacts and steel verified against spec sheets; batch samples kept for the life of the program.' },
   { title: 'In-line inspection', body: 'Vision systems check contact alignment and shutter action at three critical assembly stations.' },
   { title: 'Endurance testing', body: 'Switches run 50,000 cycles, sockets 10,000 insertions — sampled from every production batch.' },
@@ -15,7 +15,8 @@ const QC_PROCESS = [
 ];
 
 export default function QualityPage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === 'zh';
   usePageMeta({
     title: 'Quality & Compliance',
     description:
@@ -47,7 +48,7 @@ export default function QualityPage() {
                   <span className="qc-list__num mono">{String(i + 1).padStart(2, '0')}</span>
                   <div>
                     <h3 className="h4">{stage.title}</h3>
-                    <p className="body-sm">{stage.body}</p>
+                    <p className="body-sm">{isZh && stage.bodyZh ? stage.bodyZh : stage.body}</p>
                   </div>
                 </li>
               ))}
@@ -72,7 +73,7 @@ export default function QualityPage() {
               <article key={cert.id} className="cert-card">
                 <p className="cert-card__code mono">{cert.code}</p>
                 <h3 className="h4">{cert.name}</h3>
-                <p className="body-sm">{cert.description}</p>
+                <p className="body-sm">{isZh && cert.descriptionZh ? cert.descriptionZh : cert.description}</p>
                 <p className="cert-card__scope mono">{cert.scope}</p>
               </article>
             ))}

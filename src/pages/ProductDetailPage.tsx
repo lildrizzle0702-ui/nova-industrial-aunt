@@ -11,6 +11,7 @@ import { ArrowIcon } from '../components/ui/SectionHead';
 import { pdpConfig } from '../config/hero';
 import { useLocale } from '../lib/i18n';
 import { useDisplay } from '../lib/display';
+import type { Locale } from '../lib/i18n';
 
 interface GallerySlide {
   key: string;
@@ -26,7 +27,8 @@ const BASE_SLIDES: GallerySlide[] = [
 ];
 
 export default function ProductDetailPage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = (locale as Locale) === 'zh';
   const { productName, productShort, categoryName } = useDisplay();
   const { slug = '' } = useParams();
   const product = productBySlug(slug);
@@ -262,8 +264,8 @@ export default function ProductDetailPage() {
           )}
 
           <ul className="pdp__features">
-            {product.features.map((feature) => (
-              <li key={feature}>{feature}</li>
+            {product.features.map((feature, i) => (
+              <li key={feature}>{isZh && product.featuresZh?.[i] ? product.featuresZh[i] : feature}</li>
             ))}
           </ul>
         </div>
@@ -343,7 +345,7 @@ export default function ProductDetailPage() {
             <p className="eyebrow">
               <span className="mono">05</span>{t('pdp.overview')}
             </p>
-            <p>{product.description}</p>
+            <p>{isZh && product.descriptionZh ? product.descriptionZh : product.description}</p>
           </div>
         </div>
       </div>

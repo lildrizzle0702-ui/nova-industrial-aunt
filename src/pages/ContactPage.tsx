@@ -18,7 +18,8 @@ interface ContactFormState {
 const EMPTY: ContactFormState = { name: '', email: '', company: '', subject: '', message: '' };
 
 export default function ContactPage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === 'zh';
   usePageMeta({
     title: 'Contact',
     description: `Contact NOVA INDUSTRIAL — email ${contact.email}, phone ${contact.phone}, WhatsApp and factory address in Wenzhou, China. Sales replies within one business day.`,
@@ -253,7 +254,7 @@ export default function ContactPage() {
             {faqs.map((item) => (
               <details key={item.question} className="faq-item">
                 <summary className="faq-item__q">{item.question}</summary>
-                <p className="faq-item__a body-sm">{item.answer}</p>
+                <p className="faq-item__a body-sm">{isZh && item.answerZh ? item.answerZh : item.answer}</p>
               </details>
             ))}
           </div>

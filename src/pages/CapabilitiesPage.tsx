@@ -16,7 +16,8 @@ const PROCESS = [
 ];
 
 export default function CapabilitiesPage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === 'zh';
   usePageMeta({
     title: 'Capabilities',
     description:
@@ -43,14 +44,14 @@ export default function CapabilitiesPage() {
               <div className="capability-detail__head">
                 <span className="capability-detail__index mono">{cap.index}</span>
                 <h2 className="h2" id={`cap-${cap.id}`}>
-                  {cap.title}
+                  {isZh && cap.titleZh ? cap.titleZh : cap.title}
                 </h2>
               </div>
               <div className="capability-detail__body">
-                <p className="lead">{cap.description}</p>
+                <p className="lead">{isZh && cap.descriptionZh ? cap.descriptionZh : cap.description}</p>
                 <ul className="check-list">
-                  {cap.points.map((point) => (
-                    <li key={point}>{point}</li>
+                  {cap.points.map((point, i) => (
+                    <li key={point}>{isZh && cap.pointsZh?.[i] ? cap.pointsZh[i] : point}</li>
                   ))}
                 </ul>
               </div>

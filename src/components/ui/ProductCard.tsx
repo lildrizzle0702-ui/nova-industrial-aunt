@@ -12,9 +12,15 @@ type CardVariant = 'grid' | 'row' | 'compact';
 export function ProductCard({
   product,
   variant = 'grid',
+  compare = false,
+  onToggleCompare,
+  compareSelected = false,
 }: {
   product: Product;
   variant?: CardVariant;
+  compare?: boolean;
+  onToggleCompare?: (id: string) => void;
+  compareSelected?: boolean;
 }) {
   const inquiry = useInquiry();
   const { t } = useLocale();
@@ -45,6 +51,17 @@ export function ProductCard({
         {t('common.viewProduct')}
         <ArrowIcon />
       </Link>
+      {!compact && compare && (
+        <button
+          type="button"
+          className={`btn btn--sm ${compareSelected ? '' : 'btn--outline'}`}
+          onClick={() => onToggleCompare?.(product.id)}
+          aria-pressed={compareSelected}
+          aria-label={`${compareSelected ? 'Remove' : 'Compare'} ${productName(product)}`}
+        >
+          {compareSelected ? '✓ ' + t('compare.selected') : t('compare.add')}
+        </button>
+      )}
       {!compact && (
         <button
           type="button"
@@ -65,7 +82,7 @@ export function ProductCard({
   /* Row variant — flagship editorial layout: content beside the image. */
   if (variant === 'row') {
     return (
-      <article className="product-card product-card--row">
+      <article id={`p-${product.sku}`} className="product-card product-card--row">
         {media}
         <div className="product-card__body">
           <p className="product-card__meta mono">
@@ -92,7 +109,10 @@ export function ProductCard({
   }
 
   return (
-    <article className={`product-card ${compact ? 'product-card--compact' : ''}`}>
+    <article
+      id={`p-${product.sku}`}
+      className={`product-card ${compact ? 'product-card--compact' : ''}`}
+    >
       {media}
       <div className="product-card__body">
         <p className="product-card__meta mono">

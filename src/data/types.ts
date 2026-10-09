@@ -121,6 +121,8 @@ export interface Certification {
   code: string;
   name: string;
   description: string;
+  /** Chinese description — used when locale is zh. */
+  descriptionZh?: string;
   /** Which products / markets this certification covers. */
   scope: string;
 }
@@ -158,8 +160,12 @@ export interface Product {
   shortDescription: string;
   /** Chinese short description — used when locale is zh. */
   shortDescriptionZh?: string;
+  /** Chinese full description — used when locale is zh. */
+  descriptionZh?: string;
   description: string;
   features: string[];
+  /** Chinese features, index-matched — used when locale is zh. */
+  featuresZh?: string[];
   specifications: SpecRow[];
   applications: string[];
   certificationIds: string[];
@@ -196,13 +202,20 @@ export interface Capability {
   id: string;
   index: string;
   title: string;
+  /** Chinese title — used when locale is zh. */
+  titleZh?: string;
   description: string;
   points: string[];
+  /** Chinese description/points, index-matched — used when locale is zh. */
+  descriptionZh?: string;
+  pointsZh?: string[];
 }
 
 export interface FaqItem {
   question: string;
   answer: string;
+  /** Chinese answer — used when locale is zh. */
+  answerZh?: string;
 }
 
 export interface CtaBandConfig {
