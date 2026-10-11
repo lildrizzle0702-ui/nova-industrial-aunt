@@ -83,6 +83,7 @@ export function ProductMedia({
   images,
   view = 'hero',
   title,
+  alt,
   className,
   aspectRatio,
   objectFit = 'cover',
@@ -93,6 +94,8 @@ export function ProductMedia({
   images?: Partial<Record<ProductView, MediaSlot>> & { gallery?: MediaSlot[] };
   view?: ProductView;
   title: string;
+  /** English alt text for the product image (used for SEO). */
+  alt?: string;
   className?: string;
   aspectRatio?: string;
   objectFit?: CSSProperties['objectFit'];
@@ -105,7 +108,7 @@ export function ProductMedia({
   return (
     <Media
       src={asset.src}
-      alt={asset.alt ?? title}
+      alt={asset.alt ?? alt ?? title}
       aspectRatio={aspectRatio}
       objectFit={objectFit}
       objectPosition={asset.position}

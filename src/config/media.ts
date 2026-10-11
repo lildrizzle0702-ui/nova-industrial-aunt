@@ -78,6 +78,10 @@ export interface ClientMedia {
   brand: ClientBrandMedia;
   home: ClientHomeMedia;
   factory: ClientFactoryMedia;
+  /** Factory tour gallery — 6 to 8 workshop shots. */
+  factoryTour: MediaSlot[];
+  /** Certificate scan slots keyed by certification id. */
+  certificateScans: Partial<Record<string, MediaSlot>>;
   /** Key: product slug — the same key every page renders by. */
   products: Record<string, ClientProductMedia>;
 }
@@ -90,27 +94,43 @@ export const clientMedia: ClientMedia = {
   brand: {},
   home: {},
   factory: {},
+  factoryTour: [],
+  certificateScans: {},
   products: {},
 
   // ---- Example of a filled client registry: ----
   // brand: {
-  //   logo: '/assets/client/brand/logo.png',
-  //   favicon: '/assets/client/brand/favicon.png',
+  //   logo: '/assets/img/brand/logo.png',
+  //   favicon: '/assets/img/brand/favicon.png',
   // },
   // home: {
-  //   hero: '/assets/client/factory/plant-exterior.jpg',
+  //   hero: '/assets/img/factory/plant-exterior.jpg',
   // },
   // factory: {
-  //   production: '/assets/client/factory/assembly-line.jpg',
-  //   quality: '/assets/client/factory/qc-lab.jpg',
-  //   warehouse: '/assets/client/factory/warehouse.jpg',
-  //   packaging: '/assets/client/factory/packing.jpg',
+  //   production: '/assets/img/factory/assembly-line.jpg',
+  //   quality: '/assets/img/factory/qc-lab.jpg',
+  //   warehouse: '/assets/img/factory/warehouse.jpg',
+  //   packaging: '/assets/img/factory/packing.jpg',
+  // },
+  // factoryTour: [
+  //   '/assets/img/factory-workshop-01.jpg',
+  //   '/assets/img/factory-workshop-02.jpg',
+  //   '/assets/img/factory-workshop-03.jpg',
+  //   '/assets/img/factory-workshop-04.jpg',
+  //   '/assets/img/factory-workshop-05.jpg',
+  //   '/assets/img/factory-workshop-06.jpg',
+  // ],
+  // certificateScans: {
+  //   iso9001: '/assets/img/cert-iso9001.jpg',
+  //   ce: '/assets/img/cert-ce.jpg',
+  //   rohs: '/assets/img/cert-rohs.jpg',
+  //   ukca: '/assets/img/cert-ukca.jpg',
   // },
   // products: {
   //   'schuko-socket-16a': {
-  //     hero: { src: '/assets/client/products/e116-front.jpg', alt: 'NV-E116 in matte white' },
-  //     technical: '/assets/client/products/e116-drawing.png',
-  //     gallery: ['/assets/client/products/e116-detail-1.jpg'],
+  //     hero: { src: '/assets/img/products/e116-front.jpg', alt: 'NV-E116 in matte white' },
+  //     technical: '/assets/img/products/e116-drawing.png',
+  //     gallery: ['/assets/img/products/e116-detail-1.jpg'],
   //   },
   // },
 };
@@ -152,6 +172,20 @@ export function resolveEditorialMedia(subject: EditorialSubject): MediaAsset | u
   if (mediaMode !== 'client') return undefined;
   const homeHero = subject === 'hero' ? normalizeSlot(clientMedia.home.hero) : undefined;
   return homeHero ?? normalizeSlot(clientMedia.factory[subject]);
+}
+
+/** Factory tour gallery slots. */
+export function resolveFactoryTourMedia(): MediaAsset[] {
+  if (mediaMode !== 'client') return [];
+  return clientMedia.factoryTour
+    .map((s) => normalizeSlot(s))
+    .filter((a): a is MediaAsset => Boolean(a));
+}
+
+/** Certificate scan slot by certification id. */
+export function resolveCertificateScan(certId: string): MediaAsset | undefined {
+  if (mediaMode !== 'client') return undefined;
+  return normalizeSlot(clientMedia.certificateScans[certId]);
 }
 
 /** Brand logo for the header/footer mark. */

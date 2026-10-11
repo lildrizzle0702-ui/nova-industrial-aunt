@@ -5,9 +5,12 @@ import { FeaturedProducts } from '../sections/FeaturedProducts';
 import { CapabilitiesSection } from '../sections/CapabilitiesSection';
 import { OemSection } from '../sections/OemSection';
 import { QualitySection } from '../sections/QualitySection';
+import { FactoryTourSection } from '../sections/FactoryTourSection';
+import { CertificatesSection } from '../sections/CertificatesSection';
+import { TrustSection } from '../sections/TrustSection';
 import { ExportSection } from '../sections/ExportSection';
 import { CtaBand } from '../sections/StatsBand';
-import { usePageMeta, organizationJsonLd } from '../lib/seo';
+import { usePageMeta, homeJsonLd } from '../lib/seo';
 import { seo } from '../config/theme';
 
 /**
@@ -21,7 +24,7 @@ export default function HomePage() {
     title: seo.defaultTitle,
     description: seo.defaultDescription,
     path: '/',
-    jsonLd: organizationJsonLd(),
+    jsonLd: homeJsonLd(),
   });
 
   return (
@@ -33,6 +36,9 @@ export default function HomePage() {
       <CapabilitiesSection />
       <OemSection />
       <QualitySection />
+      <FactoryTourSection />
+      <CertificatesSection />
+      <TrustSection />
       <ExportSection />
       <CtaBand />
     </>

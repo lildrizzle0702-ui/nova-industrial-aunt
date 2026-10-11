@@ -55,7 +55,8 @@ export default function InquiryPage() {
                     slug={product.slug}
                     spec={product.visual}
                     images={product.images}
-                    title=""
+                    title={product.name}
+                    alt={product.name}
                   />
                 </div>
               ))}

@@ -6,18 +6,17 @@ import { ArrowIcon } from '../components/ui/SectionHead';
 import { usePageMeta } from '../lib/seo';
 import { useLocale } from '../lib/i18n';
 
-const PROCESS = [
-  { step: '01', title: 'Drawing & tooling review', body: 'Your drawing or sample is reviewed by a project engineer; materials, shutters and terminals confirmed in writing.' },
-  { step: '02', title: 'First article', body: 'Samples produced on production tooling within 7 days of sign-off, with dimensional report.' },
-  { step: '03', title: 'Pilot run', body: '300–500 units run through the full line with in-line QC checkpoints before mass production.' },
-  { step: '04', title: 'Mass production', body: '8 automated lines with vision inspection at critical stations; batch records archived.' },
-  { step: '05', title: 'Final inspection & packing', body: 'AQL 1.0 final inspection, drop-tested cartons, container loading plan with utilization report.' },
-  { step: '06', title: 'Export', body: 'Documentation, L/C and attestation handled by a dedicated clerk; FOB / CIF / DDP from Ningbo.' },
-];
-
 export default function CapabilitiesPage() {
   const { t, locale } = useLocale();
   const isZh = locale === 'zh';
+  const process = [
+    { step: '01', title: t('capabilities.oem.step1.title'), body: t('capabilities.oem.step1.body') },
+    { step: '02', title: t('capabilities.oem.step2.title'), body: t('capabilities.oem.step2.body') },
+    { step: '03', title: t('capabilities.oem.step3.title'), body: t('capabilities.oem.step3.body') },
+    { step: '04', title: t('capabilities.oem.step4.title'), body: t('capabilities.oem.step4.body') },
+    { step: '05', title: t('capabilities.oem.step5.title'), body: t('capabilities.oem.step5.body') },
+    { step: '06', title: t('capabilities.oem.step6.title'), body: t('capabilities.oem.step6.body') },
+  ];
   usePageMeta({
     title: 'Capabilities',
     description:
@@ -65,7 +64,7 @@ export default function CapabilitiesPage() {
           <div className="media-strip">
             {factoryMediaStrip.map((m) => (
               <div key={m.subject} className="media-strip__item">
-                <EditorialMedia subject={m.subject} title={m.caption} caption={m.caption} aspectRatio="4 / 3" />
+                <EditorialMedia subject={m.subject} title={isZh && m.captionZh ? m.captionZh : m.caption} caption={isZh && m.captionZh ? m.captionZh : m.caption} aspectRatio="4 / 3" />
               </div>
             ))}
           </div>
@@ -77,12 +76,11 @@ export default function CapabilitiesPage() {
           <div className="factory">
             <div className="factory__copy">
               <p className="eyebrow eyebrow--ink">
-                <span className="mono">07</span> OEM / ODM Process
+                <span className="mono">07</span> {t('capabilities.oem.label')}
               </p>
-              <h2 className="h2">From drawing to container in six controlled steps.</h2>
+              <h2 className="h2">{t('capabilities.oem.title')}</h2>
               <p className="factory__desc">
-                A named project engineer owns your file from first drawing to loaded container. No
-                hand-offs between departments, no “check with the factory” replies.
+                {t('capabilities.oem.desc')}
               </p>
             </div>
             <div className="factory__visual" aria-hidden="true">
@@ -90,7 +88,7 @@ export default function CapabilitiesPage() {
             </div>
           </div>
           <ol className="process-list">
-            {PROCESS.map((p) => (
+            {process.map((p) => (
               <li key={p.step} className="process-list__item">
                 <span className="process-list__step mono">{p.step}</span>
                 <div>

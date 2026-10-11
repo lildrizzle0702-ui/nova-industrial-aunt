@@ -39,6 +39,7 @@ export function CategoryGrid() {
                       spec={representative.visual}
                       images={representative.images}
                       title={`${category.name} range`}
+                      alt={`${category.name} range`}
                     />
                   )}
                   <span className="category-card__count mono">{count} {t('common.skus')}</span>

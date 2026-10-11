@@ -5,18 +5,17 @@ import { ArrowIcon } from '../components/ui/SectionHead';
 import { usePageMeta } from '../lib/seo';
 import { useLocale } from '../lib/i18n';
 
-const QC_PROCESS: { title: string; body: string; bodyZh?: string }[] = [
-  { title: 'Incoming materials', body: 'Resin, contacts and steel verified against spec sheets; batch samples kept for the life of the program.' },
-  { title: 'In-line inspection', body: 'Vision systems check contact alignment and shutter action at three critical assembly stations.' },
-  { title: 'Endurance testing', body: 'Switches run 50,000 cycles, sockets 10,000 insertions — sampled from every production batch.' },
-  { title: 'Dielectric & insulation', body: '2,000V for one minute between live parts and body; insulation resistance ≥ 2MΩ.' },
-  { title: 'Environmental', body: 'IPX5/IPX6 spray chamber for weatherproof ranges; −25°C to +85°C cycling for electronics.' },
-  { title: 'Final AQL inspection', body: 'AQL 1.0 pre-shipment inspection with photographic reports archived per batch.' },
-];
-
 export default function QualityPage() {
   const { t, locale } = useLocale();
   const isZh = locale === 'zh';
+  const qcProcess = [
+    { title: t('quality.qc1.title'), body: t('quality.qc1.body') },
+    { title: t('quality.qc2.title'), body: t('quality.qc2.body') },
+    { title: t('quality.qc3.title'), body: t('quality.qc3.body') },
+    { title: t('quality.qc4.title'), body: t('quality.qc4.body') },
+    { title: t('quality.qc5.title'), body: t('quality.qc5.body') },
+    { title: t('quality.qc6.title'), body: t('quality.qc6.body') },
+  ];
   usePageMeta({
     title: 'Quality & Compliance',
     description:
@@ -32,8 +31,6 @@ export default function QualityPage() {
           <h1 className="h1">{t('quality.title')}</h1>
           <p className="lead">
             {t('quality.desc')}
-            that cannot skip a test, batches that cannot ship without records. The result is a
-            98.6% first-pass rate and warranty claims under 0.2%.
           </p>
         </div>
       </div>
@@ -43,12 +40,12 @@ export default function QualityPage() {
           <div>
             <h2 className="h2">{t('quality.process.title')}</h2>
             <ol className="qc-list">
-              {QC_PROCESS.map((stage, i) => (
+              {qcProcess.map((stage, i) => (
                 <li key={stage.title} className="qc-list__item">
                   <span className="qc-list__num mono">{String(i + 1).padStart(2, '0')}</span>
                   <div>
                     <h3 className="h4">{stage.title}</h3>
-                    <p className="body-sm">{isZh && stage.bodyZh ? stage.bodyZh : stage.body}</p>
+                    <p className="body-sm">{stage.body}</p>
                   </div>
                 </li>
               ))}
@@ -72,9 +69,9 @@ export default function QualityPage() {
             {certifications.map((cert) => (
               <article key={cert.id} className="cert-card">
                 <p className="cert-card__code mono">{cert.code}</p>
-                <h3 className="h4">{cert.name}</h3>
+                <h3 className="h4">{isZh && cert.nameZh ? cert.nameZh : cert.name}</h3>
                 <p className="body-sm">{isZh && cert.descriptionZh ? cert.descriptionZh : cert.description}</p>
-                <p className="cert-card__scope mono">{cert.scope}</p>
+                <p className="cert-card__scope mono">{isZh && cert.scopeZh ? cert.scopeZh : cert.scope}</p>
               </article>
             ))}
           </div>

@@ -40,7 +40,8 @@ export function ProductCard({
         slug={product.slug}
         spec={product.visual}
         images={product.images}
-        title={`${product.name} — front view`}
+        title={`${product.name} — ${t('common.viewProduct')}`}
+        alt={product.name}
       />
     </Link>
   );
@@ -57,7 +58,7 @@ export function ProductCard({
           className={`btn btn--sm ${compareSelected ? '' : 'btn--outline'}`}
           onClick={() => onToggleCompare?.(product.id)}
           aria-pressed={compareSelected}
-          aria-label={`${compareSelected ? 'Remove' : 'Compare'} ${productName(product)}`}
+          aria-label={`${compareSelected ? t('common.remove') : t('compare.add')} ${productName(product)}`}
         >
           {compareSelected ? '✓ ' + t('compare.selected') : t('compare.add')}
         </button>
@@ -69,8 +70,8 @@ export function ProductCard({
           onClick={() => (inBasket ? inquiry.openDrawer() : inquiry.add(product.id))}
           aria-label={
             inBasket
-              ? `${product.name} is in your inquiry basket`
-              : `Add ${product.name} to inquiry`
+              ? `${productName(product)} ${t('pdp.inBasket')}`
+              : `${t('pdp.addInquiry')}: ${productName(product)}`
           }
         >
           {inBasket ? t('pdp.inBasket') + ' ✓' : t('pdp.addInquiry')}
@@ -117,7 +118,7 @@ export function ProductCard({
       <div className="product-card__body">
         <p className="product-card__meta mono">
           <span>{product.sku}</span>
-          <span>{category.shortName}</span>
+          <span>{categoryShort(category)}</span>
         </p>
         <h3 className="product-card__name">
           <Link to={`/products/${product.slug}`}>{productName(product)}</Link>

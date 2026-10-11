@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { seo } from '../config/theme';
+import { company } from '../config/company';
+import { contact } from '../config/contact';
+import { useLocale } from './i18n';
+
+/** Placeholder OG/Twitter image. Replace with a real 1200×630 asset. */
+const OG_IMAGE = '/assets/img/og-placeholder.png';
 
 interface PageMeta {
   title: string;
@@ -41,9 +47,36 @@ function setJsonLd(data: Record<string, unknown>) {
   document.head.appendChild(el);
 }
 
+function setOgImage(url: string) {
+  setMeta('property', 'og:image', url);
+  setMeta('property', 'og:image:width', '1200');
+  setMeta('property', 'og:image:height', '630');
+  setMeta('name', 'twitter:image', url);
+}
+
+function setHreflang(path: string) {
+  const enUrl = `${seo.siteUrl}${path}`;
+  const zhUrl = `${seo.siteUrl}/zh${path === '/' ? '' : path}`;
+  const langs = [
+    { rel: 'alternate', hreflang: 'x-default', href: enUrl },
+    { rel: 'alternate', hreflang: 'en', href: enUrl },
+    { rel: 'alternate', hreflang: 'zh-CN', href: zhUrl },
+  ];
+  document.head.querySelectorAll('link[data-hreflang]').forEach((el) => el.remove());
+  langs.forEach((l) => {
+    const el = document.createElement('link');
+    el.rel = l.rel;
+    el.hreflang = l.hreflang;
+    el.href = l.href;
+    el.setAttribute('data-hreflang', 'true');
+    document.head.appendChild(el);
+  });
+}
+
 /** Per-route document head management for the SPA. */
 export function usePageMeta({ title, description, path, jsonLd }: PageMeta) {
   const location = useLocation();
+  const { locale } = useLocale();
   const canonicalPath = path ?? location.pathname;
 
   useEffect(() => {
@@ -61,16 +94,20 @@ export function usePageMeta({ title, description, path, jsonLd }: PageMeta) {
     setMeta('property', 'og:type', 'website');
     setMeta('property', 'og:site_name', seo.siteName);
     setMeta('property', 'og:url', url);
+    setMeta('property', 'og:locale', locale === 'zh' ? 'zh_CN' : 'en_US');
+    setOgImage(`${seo.siteUrl}${OG_IMAGE}`);
     setMeta('name', 'twitter:card', 'summary_large_image');
     setMeta('name', 'twitter:title', fullTitle);
     setMeta('name', 'twitter:description', desc);
+
+    setHreflang(canonicalPath);
 
     if (jsonLd) {
       setJsonLd(jsonLd);
     } else {
       document.getElementById('page-jsonld')?.remove();
     }
-  }, [title, description, canonicalPath, jsonLd]);
+  }, [title, description, canonicalPath, jsonLd, locale]);
 }
 
 /* ---------- Shared JSON-LD builders ---------- */
@@ -79,9 +116,37 @@ export function organizationJsonLd(): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: seo.siteName,
+    name: company.legalName,
     url: seo.siteUrl,
     description: seo.defaultDescription,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: contact.email,
+      telephone: contact.phone,
+      contactType: 'sales',
+      availableLanguage: ['English', 'Chinese'],
+    },
+  };
+}
+
+export function websiteJsonLd(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: seo.siteName,
+    url: seo.siteUrl,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${seo.siteUrl}/products?search={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}
+
+export function homeJsonLd(): Record<string, unknown> {
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [organizationJsonLd(), websiteJsonLd()],
   };
 }
 

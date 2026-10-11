@@ -14,6 +14,7 @@ import {
 import { ProductCard } from '../components/ui/ProductCard';
 import { usePageMeta } from '../lib/seo';
 import { useLocale } from '../lib/i18n';
+import { useDisplay } from '../lib/display';
 
 const SORTS: { value: SortKey; label: string }[] = [
   { value: 'featured', label: 'Featured' },
@@ -61,6 +62,7 @@ function useIndexCounts() {
 
 export default function ProductsPage() {
   const { t } = useLocale();
+  const { categoryName } = useDisplay();
   const [searchParams, setSearchParams] = useSearchParams();
   const filters = useMemo(() => readFilters(searchParams), [searchParams]);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -102,14 +104,13 @@ export default function ProductsPage() {
       <div className="page-hero page-hero--catalogue">
         <div className="container">
           <div className="page-hero__head">
-            <p className="eyebrow">Product Catalogue</p>
+            <p className="eyebrow">{t('products.label')}</p>
             <h1 className="h1">{t('products.title')}</h1>
             <p className="lead">
-              {products.length} SKUs across {categories.length} families — all produced on the same
-              86mm platform and export-ready. Quote any list in one request.
+              {t('products.lead')}
             </p>
           </div>
-          <ul className="catalogue-meta mono" aria-label="Catalogue metadata">
+          <ul className="catalogue-meta mono" aria-label={t('products.metaAria')}>
             <li>
               <span className="catalogue-meta__num">{products.length}</span> {t('products.meta.skus')}
             </li>
@@ -145,7 +146,7 @@ export default function ProductsPage() {
             </button>
             <div className="search-wrap catalogue__search">
               <label className="visually-hidden" htmlFor="catalogue-search">
-                Search products by name, SKU or keyword
+                {t('products.searchLabel')}
               </label>
               <input
                 id="catalogue-search"
@@ -189,8 +190,8 @@ export default function ProductsPage() {
           <div className="catalogue__status">
             <p className="caption" aria-live="polite">
               {results.length} {t('common.productsCount')}
-              {filters.category ? ` in ${categories.find((c) => c.slug === filters.category)?.name}` : ''}
-              {filters.query ? ` matching “${filters.query}”` : ''}
+              {filters.category ? ` ${t('common.in')} ${categoryName(categories.find((c) => c.slug === filters.category)!)}` : ''}
+              {filters.query ? ` ${t('products.matchingQuery').replace('{q}', filters.query)}` : ''}
             </p>
             {isFiltered && (
               <button type="button" className="text-btn" onClick={clearAll}>
@@ -246,6 +247,7 @@ function FilterGroups({
   update: (patch: Partial<CatalogueFilters>) => void;
 }) {
   const { t } = useLocale();
+  const { categoryName, applicationLabel } = useDisplay();
   return (
     <>
       <FilterGroup label={t('products.category')}>
@@ -266,7 +268,7 @@ function FilterGroups({
                 onClick={() => update({ category: filters.category === c.slug ? null : c.slug })}
                 count={counts.byCategory[c.id] ?? 0}
               >
-                {c.name}
+                {categoryName(c)}
               </FilterButton>
             </li>
           ))}
@@ -282,7 +284,7 @@ function FilterGroups({
                 onClick={() => update({ application: filters.application === a ? null : a })}
                 count={counts.byApplication[a] ?? 0}
               >
-                {a}
+                {applicationLabel(a)}
               </FilterButton>
             </li>
           ))}
@@ -382,14 +384,14 @@ function FilterSheet({
       <button
         type="button"
         className="drawer__scrim"
-        aria-label="Close filters"
+        aria-label={t('filters.close')}
         tabIndex={-1}
         onClick={onClose}
       />
-      <div className="filter-sheet__panel" role="dialog" aria-modal="true" aria-label="Product filters">
+      <div className="filter-sheet__panel" role="dialog" aria-modal="true" aria-label={t('filters.titleAria')}>
         <div className="filter-sheet__head">
           <h2 className="h4">{t('products.filtersTitle')}</h2>
-          <button type="button" className="drawer__close" onClick={onClose} aria-label="Close">
+          <button type="button" className="drawer__close" onClick={onClose} aria-label={t('common.close')}>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>

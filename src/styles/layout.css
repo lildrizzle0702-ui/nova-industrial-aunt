@@ -110,17 +110,29 @@
   margin-left: var(--sp-2);
 }
 
-.basket-btn {
+.basket-btn,
+.lang-toggle {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 8px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius);
+  background: transparent;
   color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  cursor: pointer;
   transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.basket-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
 }
 
 .basket-btn:hover {
@@ -384,8 +396,8 @@
 }
 
 .drawer__close {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -500,8 +512,18 @@
 }
 
 @media (max-width: 640px) {
+  body {
+    padding-bottom: 64px;
+  }
+
   .site-header__inner {
     height: 64px;
+    gap: var(--sp-3);
+  }
+
+  .site-header__actions {
+    gap: 8px;
+    margin-left: auto;
   }
 
   :root {
@@ -509,13 +531,14 @@
   }
 
   .basket-btn,
-  .menu-toggle {
+  .menu-toggle,
+  .lang-toggle {
     width: 44px;
     height: 44px;
   }
 
   .mobile-menu__link {
-    padding-block: 16px;
+    padding-block: 18px;
   }
 
   .site-footer__grid {

@@ -12,6 +12,8 @@ export interface BrandConfig {
   wordmarkSecondary: string;
   tagline: string;
   description: string;
+  taglineZh?: string;
+  descriptionZh?: string;
 }
 
 export interface CompanyConfig {
@@ -23,12 +25,21 @@ export interface CompanyConfig {
   factoryArea: string;
   annualCapacity: string;
   experience: string;
+  legalNameZh?: string;
+  headquartersZh?: string;
+  marketsZh?: string[];
+  employeesZh?: string;
+  factoryAreaZh?: string;
+  annualCapacityZh?: string;
+  experienceZh?: string;
 }
 
 export interface FactoryStat {
   value: string;
   label: string;
   note?: string;
+  labelZh?: string;
+  noteZh?: string;
 }
 
 export interface ContactConfig {
@@ -42,16 +53,22 @@ export interface ContactConfig {
   country: string;
   businessHours: string;
   responseTime: string;
+  addressLinesZh?: string[];
+  countryZh?: string;
+  businessHoursZh?: string;
+  responseTimeZh?: string;
 }
 
 export interface NavItem {
   label: string;
   href: string;
+  labelZh?: string;
 }
 
 export interface FooterColumn {
   title: string;
   links: NavItem[];
+  titleZh?: string;
 }
 
 export interface NavigationConfig {
@@ -123,13 +140,16 @@ export interface Certification {
   description: string;
   /** Chinese description — used when locale is zh. */
   descriptionZh?: string;
+  nameZh?: string;
   /** Which products / markets this certification covers. */
   scope: string;
+  scopeZh?: string;
 }
 
 export interface SpecRow {
   label: string;
   value: string;
+  labelZh?: string;
 }
 
 export interface ProductVisualSpec {
@@ -168,6 +188,7 @@ export interface Product {
   featuresZh?: string[];
   specifications: SpecRow[];
   applications: string[];
+  applicationsZh?: string[];
   certificationIds: string[];
   keywords: string[];
   featured?: boolean;
@@ -177,10 +198,15 @@ export interface Product {
   /** Real photography slots; absent views fall back to the SVG demo renderer. */
   images?: ProductImages;
   colors: string[];
+  colorsZh?: string[];
   warranty: string;
+  warrantyZh?: string;
   packaging: string;
+  packagingZh?: string;
   moq: string;
+  moqZh?: string;
   leadTime: string;
+  leadTimeZh?: string;
   relatedSlugs?: string[];
 }
 
@@ -188,14 +214,19 @@ export interface Product {
 
 export interface HeroConfig {
   eyebrow: string;
+  eyebrowZh?: string;
   titleLines: string[];
+  titleLinesZh?: string[];
   description: string;
+  descriptionZh?: string;
   primaryCta: NavItem;
   secondaryCta: NavItem;
   /** Technical metadata line — rendered as quiet mono annotation, not badges. */
   footnote: string;
+  footnoteZh?: string;
   /** Caption under the hero visual, styled like a drawing title block. */
   visualCaption: string;
+  visualCaptionZh?: string;
 }
 
 export interface Capability {
@@ -214,14 +245,19 @@ export interface Capability {
 export interface FaqItem {
   question: string;
   answer: string;
+  /** Chinese question — used when locale is zh. */
+  questionZh?: string;
   /** Chinese answer — used when locale is zh. */
   answerZh?: string;
 }
 
 export interface CtaBandConfig {
   eyebrow: string;
+  eyebrowZh?: string;
   title: string;
+  titleZh?: string;
   description: string;
+  descriptionZh?: string;
   primaryCta: NavItem;
   secondaryCta: NavItem;
 }

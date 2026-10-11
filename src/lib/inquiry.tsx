@@ -142,26 +142,37 @@ export function inquirySummaryText(
   contact: InquiryContactForm,
   rows: InquiryRow[],
   footer: string,
+  labels: {
+    title: string;
+    name: string;
+    company: string;
+    email: string;
+    country: string;
+    certification: string;
+    packaging: string;
+    productsOfInterest: string;
+    message: string;
+    none: string;
+    productLine: (r: InquiryRow, i: number) => string;
+  },
 ): string {
-  const productLines = rows
-    .map((r, i) => `${i + 1}. ${r.product.name} — SKU ${r.product.sku} — Qty ${r.quantity}`)
-    .join('\n');
+  const productLines = rows.map((r, i) => labels.productLine(r, i)).join('\n');
 
   return [
-    'REQUEST FOR QUOTATION',
+    labels.title,
     '——————————————————————————',
-    `Name: ${contact.name}`,
-    `Company: ${contact.company || '—'}`,
-    `Email: ${contact.email}`,
-    `Country: ${contact.country || '—'}`,
-    `Certification requirement: ${contact.certification || '—'}`,
-    `Packaging: ${contact.packaging || '—'}`,
+    `${labels.name}: ${contact.name}`,
+    `${labels.company}: ${contact.company || labels.none}`,
+    `${labels.email}: ${contact.email}`,
+    `${labels.country}: ${contact.country || labels.none}`,
+    `${labels.certification}: ${contact.certification || labels.none}`,
+    `${labels.packaging}: ${contact.packaging || labels.none}`,
     '',
-    'Products of interest:',
-    productLines || '—',
+    `${labels.productsOfInterest}`,
+    productLines || labels.none,
     '',
-    'Message:',
-    contact.message || '—',
+    `${labels.message}`,
+    contact.message || labels.none,
     '',
     '——————————————————————————',
     footer,

@@ -31,14 +31,16 @@ export default function AboutPage() {
               {t('about.hero.title')}
             </h1>
             <p className="lead">
-              {company.legalName} has manufactured wiring devices in Wenzhou since{' '}
-              {company.founded}. Today the company produces {company.annualCapacity} a year for
-              importers, distributors and OEM buyers across {company.markets.length} regions.
+              {t('about.hero.lead')
+                .replace('{name}', isZh && company.legalNameZh ? company.legalNameZh : company.legalName)
+                .replace('{founded}', String(company.founded))
+                .replace('{capacity}', isZh && company.annualCapacityZh ? company.annualCapacityZh : company.annualCapacity)
+                .replace('{regions}', String(company.markets.length))}
             </p>
             <dl className="about-facts">
               {factSheet.map((fact) => (
                 <div key={fact.label} className="about-facts__item">
-                  <dt className="mono">{fact.label}</dt>
+                  <dt className="mono">{isZh && fact.labelZh ? fact.labelZh : fact.label}</dt>
                   <dd className="mono">{fact.value}</dd>
                 </div>
               ))}
@@ -58,23 +60,12 @@ export default function AboutPage() {
               title={t('about.company.title')}
             />
             <div className="about-intro__copy">
+              <p>{t('about.intro.p1')}</p>
+              <p>{t('about.intro.p2')}</p>
               <p>
-                NOVA INDUSTRIAL began as a switch workshop and grew by keeping every critical
-                process in-house: mold design, injection molding, contact stamping, assembly,
-                testing and export packing. Nothing in the production path is outsourced, which is
-                why lead times hold and quality escapes are rare — and caught early when they occur.
-              </p>
-              <p>
-                Our commercial model is built around B2B programs: private-label ranges for
-                electrical wholesalers, project supply for hospitality developers, and OEM
-                production for brands that sell under their own name. The NOVA catalogue you see on
-                this site is the same platform those programs are built on.
-              </p>
-              <p>
-                {company.employees} people work at the Wenzhou facility, including a 14-person mold
-                shop and an 11-person QC laboratory. {contact.responseTime.charAt(0).toUpperCase()}
-                {contact.responseTime.slice(1)} is the standard reply time for buyer inquiries —
-                from sales engineers, not account managers.
+                {t('about.intro.p3')
+                  .replace('{employees}', isZh && company.employeesZh ? company.employeesZh : company.employees)
+                  .replace('{responseTime}', isZh && contact.responseTimeZh ? contact.responseTimeZh : contact.responseTime)}
               </p>
             </div>
           </div>
@@ -96,7 +87,7 @@ export default function AboutPage() {
             {manufacturingProcess.map((stage) => (
               <li key={stage.step} className="mfg-process__item">
                 <span className="mfg-process__step mono">{stage.step}</span>
-                <h3 className="h4">{stage.title}</h3>
+                <h3 className="h4">{isZh && stage.titleZh ? stage.titleZh : stage.title}</h3>
                 <p className="body-sm">{isZh && stage.bodyZh ? stage.bodyZh : stage.body}</p>
               </li>
             ))}
@@ -110,8 +101,8 @@ export default function AboutPage() {
             {factoryStats.map((stat) => (
               <div key={stat.label} className="stat-band__item">
                 <dt className="stat-band__value mono">{stat.value}</dt>
-                <dd className="stat-band__label">{stat.label}</dd>
-                {stat.note && <dd className="stat-band__note">{stat.note}</dd>}
+                <dd className="stat-band__label">{isZh && stat.labelZh ? stat.labelZh : stat.label}</dd>
+                {stat.note && <dd className="stat-band__note">{isZh && stat.noteZh ? stat.noteZh : stat.note}</dd>}
               </div>
             ))}
           </dl>
@@ -129,25 +120,27 @@ export default function AboutPage() {
               title={t('about.markets.title')}
             />
             <ul className="markets-list">
-              {company.markets.map((market) => (
+              {company.markets.map((market, i) => (
                 <li key={market}>
-                  <span className="markets-list__name">{market}</span>
+                  <span className="markets-list__name">
+                    {isZh && company.marketsZh ? company.marketsZh[i] : market}
+                  </span>
                   <span className="caption markets-list__note">
-                    {market === 'Europe'
-                      ? 'CE · RoHS · REACH programs'
-                      : market === 'North America'
-                        ? 'NEMA-format & UL-style lines'
-                        : market === 'Middle East'
-                          ? 'BS-pattern · SASO certified'
-                          : 'Universal & multi-standard ranges'}
+                    {isZh
+                      ? t(`about.marketNote.${market.replace(/\s+/g, '')}` as never)
+                      : market === 'Europe'
+                        ? 'CE · RoHS · REACH programs'
+                        : market === 'North America'
+                          ? 'NEMA-format & UL-style lines'
+                          : market === 'Middle East'
+                            ? 'BS-pattern · SASO certified'
+                            : 'Universal & multi-standard ranges'}
                   </span>
                 </li>
               ))}
             </ul>
             <p className="body-sm text-muted">
-              Documentation teams handle Certificates of Origin, L/C shipments and attestation
-              requirements per market. FOB, CIF and DDP terms ship from Ningbo, 40 minutes from the
-              factory gate.
+              {t('about.markets.note')}
             </p>
           </div>
         </div>

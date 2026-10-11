@@ -1,12 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Root path on Vercel (VERCEL env var is set automatically on Vercel),
-// sub-path /nova-industrial-template/ everywhere else (GitHub Pages project site).
-const base = process.env.VERCEL ? '/' : '/nova-industrial-template/';
-
+// GitHub Pages project site uses a sub-path; keep this for the current deployment target.
 export default defineConfig({
-  base,
+  base: '/nova-industrial-template/',
   plugins: [react()],
   server: {
     port: 5180,

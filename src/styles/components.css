@@ -122,10 +122,12 @@
 .product-card__meta {
   display: flex;
   justify-content: space-between;
+  gap: var(--sp-2);
   font-size: 0.6875rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
+  overflow-wrap: anywhere;
 }
 
 .product-card__name {
@@ -848,5 +850,219 @@
   .media-strip {
     grid-template-columns: 1fr;
     gap: var(--sp-4);
+  }
+}
+
+/* ---------- Floating contact button ---------- */
+
+.floating-contact {
+  position: fixed;
+  right: var(--sp-4);
+  bottom: var(--sp-4);
+  z-index: 90;
+}
+
+.floating-contact__toggle,
+.floating-contact--link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--primary-on);
+  box-shadow: var(--shadow-float);
+  transition: transform var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.floating-contact__toggle:hover,
+.floating-contact--link:hover {
+  transform: translateY(-2px);
+  background: var(--accent-hover);
+}
+
+.floating-contact__panel {
+  position: absolute;
+  right: 0;
+  bottom: 68px;
+  width: 180px;
+  padding: var(--sp-2);
+  background: var(--surface);
+  border: var(--hairline) solid var(--border);
+  box-shadow: var(--shadow-float);
+}
+
+.floating-contact__panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Mobile sticky CTA bar ---------- */
+
+.mobile-cta-bar {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface);
+  border-top: var(--hairline) solid var(--border);
+  box-shadow: 0 -4px 12px rgba(20, 24, 27, 0.08);
+}
+
+@media (max-width: 640px) {
+  .mobile-cta-bar {
+    display: block;
+  }
+
+  .floating-contact {
+    bottom: calc(var(--sp-4) + 64px);
+  }
+}
+
+/* ---------- Honeypot field ---------- */
+
+.field--honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Factory tour gallery ---------- */
+
+.tour-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+}
+
+.tour-card {
+  margin: 0;
+}
+
+.tour-card__media {
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+}
+
+.tour-card__media svg,
+.tour-card__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tour-card__caption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tour-card__caption::before {
+  content: '';
+  width: 10px;
+  height: 2px;
+  flex-shrink: 0;
+  background: var(--accent);
+}
+
+/* ---------- Certificate gallery ---------- */
+
+.cert-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-5);
+}
+
+.cert-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.cert-card__media {
+  border: var(--hairline) solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  background: var(--surface-muted);
+}
+
+.cert-card__media svg,
+.cert-card__media img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cert-card__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cert-card__code {
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.cert-card__name {
+  font-size: var(--fs-body-sm);
+  color: var(--text-secondary);
+}
+
+/* ---------- Trust data grid ---------- */
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+}
+
+.trust-card {
+  border-top: var(--hairline) solid var(--border-ink);
+  padding-top: var(--sp-4);
+}
+
+.trust-card__value {
+  font-size: clamp(1.75rem, 1.2rem + 1.8vw, 2.625rem);
+  font-weight: 500;
+  color: var(--text-on-ink);
+  letter-spacing: -0.02em;
+}
+
+.trust-card__label {
+  font-size: var(--fs-body-sm);
+  color: var(--text-on-ink-secondary);
+  margin-top: 4px;
+}
+
+@media (max-width: 1023px) {
+  .tour-grid,
+  .cert-gallery,
+  .trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .tour-grid,
+  .cert-gallery,
+  .trust-grid {
+    grid-template-columns: 1fr;
   }
 }

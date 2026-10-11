@@ -60,7 +60,7 @@ export default function ComparePage() {
           {selected.map((p) => (
             <div key={p.id} className="compare-cell compare-cell--head">
               <Link to={`/products/${p.slug}`} className="compare-card__media">
-                <ProductMedia slug={p.slug} spec={p.visual} images={p.images} title={productName(p)} aspectRatio="1" />
+                <ProductMedia slug={p.slug} spec={p.visual} images={p.images} title={p.name} alt={p.name} aspectRatio="1" />
               </Link>
               <p className="compare-card__sku mono">{p.sku}</p>
               <h2 className="h3 compare-card__name">

@@ -3,7 +3,10 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { InquiryDrawer } from './InquiryDrawer';
+import { FloatingContact } from './FloatingContact';
+import { MobileCtaBar } from './MobileCtaBar';
 import { useLocale } from '../../lib/i18n';
+import { useAnalytics } from '../../lib/analytics';
 
 /** Restore scroll on route change (Browser router keeps SPA state). */
 function ScrollToTop() {
@@ -62,6 +65,8 @@ export function Layout() {
      remount the page or replay the animation. */
   useRevealObserver(pathname);
 
+  useAnalytics();
+
   return (
     <>
       <a href="#main" className="skip-link">
@@ -79,6 +84,8 @@ export function Layout() {
       </main>
       <Footer />
       <InquiryDrawer />
+      <FloatingContact />
+      <MobileCtaBar />
     </>
   );
 }

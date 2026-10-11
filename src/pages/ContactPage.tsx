@@ -20,6 +20,8 @@ const EMPTY: ContactFormState = { name: '', email: '', company: '', subject: '',
 export default function ContactPage() {
   const { t, locale } = useLocale();
   const isZh = locale === 'zh';
+  const addressLines = isZh && contact.addressLinesZh ? contact.addressLinesZh : contact.addressLines;
+  const businessHours = isZh && contact.businessHoursZh ? contact.businessHoursZh : contact.businessHours;
   usePageMeta({
     title: 'Contact',
     description: `Contact NOVA INDUSTRIAL — email ${contact.email}, phone ${contact.phone}, WhatsApp and factory address in Wenzhou, China. Sales replies within one business day.`,
@@ -39,30 +41,30 @@ export default function ContactPage() {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     const next: FieldErrors = {};
-    if (!isNonEmpty(form.name)) next.name = 'Please enter your name.';
-    if (!isNonEmpty(form.email)) next.email = 'Please enter your email.';
-    else if (!isEmail(form.email)) next.email = 'That email address doesn’t look valid.';
-    if (!isNonEmpty(form.message)) next.message = 'Please add a short message.';
+    if (!isNonEmpty(form.name)) next.name = t('contact.form.error.name');
+    if (!isNonEmpty(form.email)) next.email = t('contact.form.error.email');
+    else if (!isEmail(form.email)) next.email = t('contact.form.error.email');
+    if (!isNonEmpty(form.message)) next.message = t('contact.form.error.message');
     setErrors(next);
     if (Object.keys(next).length > 0) return;
     setSent(true);
   };
 
   const summary = [
-    'CONTACT MESSAGE',
+    t('contact.summary.title'),
     '——————————————————————————',
-    `Name: ${form.name}`,
-    `Company: ${form.company || '—'}`,
-    `Email: ${form.email}`,
-    `Subject: ${form.subject || t('contact.form.subject.general')}`,
+    `${t('contact.form.name')}: ${form.name}`,
+    `${t('contact.form.company')}: ${form.company || '—'}`,
+    `${t('contact.form.email')}: ${form.email}`,
+    `${t('contact.form.subject')}: ${form.subject || t('contact.form.subject.general')}`,
     '',
     form.message || '—',
     '',
-    `— sent via novaindustrial.com contact form · ${company.legalName}`,
+    t('contact.summary.footer').replace('{company}', isZh && company.legalNameZh ? company.legalNameZh : company.legalName),
   ].join('\n');
 
   const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(
-    form.subject || 'Website contact form',
+    form.subject || t('contact.form.placeholder.subject'),
   )}&body=${encodeURIComponent(summary)}`;
 
   const copy = async () => {
@@ -116,11 +118,11 @@ export default function ContactPage() {
           <div className="info-card">
             <h2 className="h4">{t('contact.address')}</h2>
             <address>
-              {contact.addressLines.map((line) => (
+              {addressLines.map((line) => (
                 <p key={line}>{line}</p>
               ))}
             </address>
-            <p className="caption">{contact.businessHours}</p>
+            <p className="caption">{businessHours}</p>
           </div>
         </aside>
 
@@ -129,18 +131,17 @@ export default function ContactPage() {
           {sent ? (
             <div className="quote-success">
               <div className="banner banner--success" role="status">
-                <strong>Message prepared.</strong>
+                <strong>{t('contact.success.bannerTitle')}</strong>
                 <span>
-                  This template has no mail backend, so nothing was transmitted automatically — send
-                  it via your email app or copy it for your records.
+                  {t('contact.success.bannerBody')}
                 </span>
               </div>
               <div className="quote-success__actions">
                 <a href={mailto} className="btn btn--accent" target="_blank" rel="noreferrer">
-                  Open in Email App
+                  {t('contact.success.openEmail')}
                 </a>
                 <button type="button" className="btn btn--outline" onClick={copy}>
-                  {copied ? 'Copied ✓' : 'Copy Message'}
+                  {copied ? `${t('contact.success.copied')} ✓` : t('contact.success.copyMessage')}
                 </button>
               </div>
               <pre className="quote-success__summary mono">{summary}</pre>
@@ -153,7 +154,7 @@ export default function ContactPage() {
                     setCopied(false);
                   }}
                 >
-                  Edit Message
+                  {t('contact.success.editMessage')}
                 </button>
               </div>
             </div>
@@ -162,7 +163,7 @@ export default function ContactPage() {
               <div className="form-grid">
                 <div className={`field ${errors.name ? 'field--error' : ''}`}>
                   <label className="field__label" htmlFor="cf-name">
-                    Name <span className="field__req" aria-hidden="true">*</span>
+                    {t('contact.form.name')} <span className="field__req" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="cf-name"
@@ -171,23 +172,25 @@ export default function ContactPage() {
                     onChange={(e) => set('name')(e.target.value)}
                     aria-required="true"
                     aria-invalid={Boolean(errors.name)}
+                    placeholder={t('contact.form.placeholder.name')}
                   />
                   {errors.name && <p className="field__error">{errors.name}</p>}
                 </div>
                 <div className="field">
                   <label className="field__label" htmlFor="cf-company">
-                    Company
+                    {t('contact.form.company')}
                   </label>
                   <input
                     id="cf-company"
                     autoComplete="organization"
                     value={form.company}
                     onChange={(e) => set('company')(e.target.value)}
+                    placeholder={t('contact.form.placeholder.company')}
                   />
                 </div>
                 <div className={`field ${errors.email ? 'field--error' : ''}`}>
                   <label className="field__label" htmlFor="cf-email">
-                    Email <span className="field__req" aria-hidden="true">*</span>
+                    {t('contact.form.email')} <span className="field__req" aria-hidden="true">*</span>
                   </label>
                   <input
                     id="cf-email"
@@ -197,24 +200,25 @@ export default function ContactPage() {
                     onChange={(e) => set('email')(e.target.value)}
                     aria-required="true"
                     aria-invalid={Boolean(errors.email)}
+                    placeholder="your@company.com"
                   />
                   {errors.email && <p className="field__error">{errors.email}</p>}
                 </div>
                 <div className="field">
                   <label className="field__label" htmlFor="cf-subject">
-                    Subject
+                    {t('contact.form.subject')}
                   </label>
                   <select id="cf-subject" value={form.subject} onChange={(e) => set('subject')(e.target.value)}>
                     <option value="">{t('contact.form.subject.general')}</option>
-                    <option value="Quotation request">Quotation request</option>
-                    <option value="Samples">Samples</option>
-                    <option value="OEM / ODM project">OEM / ODM project</option>
-                    <option value="Documentation">Documentation & certifications</option>
+                    <option value="Quotation request">{t('contact.form.subject.quote')}</option>
+                    <option value="Samples">{t('contact.form.subject.samples')}</option>
+                    <option value="OEM / ODM project">{t('contact.form.subject.oem')}</option>
+                    <option value="Documentation">{t('contact.form.subject.docs')}</option>
                   </select>
                 </div>
                 <div className={`field form-grid__full ${errors.message ? 'field--error' : ''}`}>
                   <label className="field__label" htmlFor="cf-message">
-                    Message <span className="field__req" aria-hidden="true">*</span>
+                    {t('contact.form.message')} <span className="field__req" aria-hidden="true">*</span>
                   </label>
                   <textarea
                     id="cf-message"
@@ -229,11 +233,10 @@ export default function ContactPage() {
               </div>
               <div className="quote-form__submit">
                 <button type="submit" className="btn btn--accent btn--lg">
-                  Send Message
+                  {t('contact.form.send')}
                 </button>
                 <p className="form-note">
-                  Your message is prepared as a complete draft — nothing is sent without your
-                  confirmation.
+                  {t('contact.form.note')}
                 </p>
               </div>
             </form>

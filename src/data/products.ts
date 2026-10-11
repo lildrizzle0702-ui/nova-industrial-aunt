@@ -23,12 +23,21 @@ export const products: Product[] = [
     shortDescriptionZh: '86mm 平台单联翘板开关，额定 10AX 250V~，银合金触点。',
     description:
       'The NV-S110 is the baseline switch of the NOVA range: a large rocker on a screwless faceplate, molded from V-0 polycarbonate with a 1.4mm wall section. Silver-alloy contacts carry 10AX inductive loads, and phosphor-bronze terminals accept 2×2.5mm² conductors. The rocker mechanism is rated for 50,000 operations and passes the IEC 60669-1 endurance schedule.',
+    descriptionZh:
+      'NV-S110 是 NOVA 系列的基础款翘板开关：大翘板配无框面板，壳体采用 V-0 级聚碳酸酯注塑，壁厚 1.4mm。银合金触点可承载 10AX 感性负载，磷青铜端子可接入 2×2.5mm² 导线。翘板机构寿命 50,000 次，通过 IEC 60669-1 耐久测试。',
     features: [
       '10AX 250V~ rating for lighting and inductive loads',
       'Silver-alloy contacts, 50,000-cycle mechanical endurance',
       'Screwless clip-on faceplate, zero visible fixings',
       'Flame-retardant polycarbonate housing to UL94 V-0',
       'Phosphor-bronze terminals accept 2×2.5mm² conductors',
+    ],
+    featuresZh: [
+      '额定 10AX 250V~，适用于照明及感性负载',
+      '银合金触点，机械寿命 50,000 次',
+      '无框卡扣面板，无可见螺丝',
+      '阻燃聚碳酸酯壳体，达 UL94 V-0',
+      '磷青铜端子，可接 2×2.5mm² 导线',
     ],
     specifications: [
       { label: 'Rated voltage', value: '250V~' },
@@ -50,7 +59,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black', 'Polished Chrome'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 11.5 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 11.5 kg',
     moq: '1,000 pcs (finishes may be mixed)',
+    moqZh: '1,000 件（可混色）',
     leadTime: LEAD,
     relatedSlugs: ['rocker-switch-2-gang', 'schuko-socket-16a', 'dual-usb-a-outlet', 'screwless-wall-plate'],
   },
@@ -67,12 +78,21 @@ export const products: Product[] = [
     shortDescriptionZh: '单面板双翘板，适用于楼梯、走廊双控回路。',
     description:
       'The NV-S210 doubles circuit control without widening the plate: two independent 10AX rockers with separate terminal chambers on the standard 86mm grid. Common applications are 2-way stairway switching and paired lighting zones in hotels and offices.',
+    descriptionZh:
+      'NV-S210 在不加宽面板的前提下实现双路控制：标准 86mm 网格内装有两组独立 10AX 翘板，端子腔分离。常用于楼梯双控及酒店、办公区的成对照明分区。',
     features: [
       'Two independent 10AX circuits behind one plate',
       '2-way switching for stairway / corridor circuits',
       'Color-coded terminal screws with captive clamps',
       'Shared terminal chamber simplifies loop-in wiring',
       'Same screwless plate system as the full NOVA range',
+    ],
+    featuresZh: [
+      '单面板内置两路独立 10AX 电路',
+      '支持楼梯/走廊双控接线',
+      '彩色端子螺丝，配防松夹',
+      '共用端子腔，简化并线接线',
+      '与全系列 NOVA 产品共用无框面板系统',
     ],
     specifications: [
       { label: 'Rated voltage', value: '250V~' },
@@ -92,7 +112,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 12 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 12 kg',
     moq: '1,000 pcs (finishes may be mixed)',
+    moqZh: '1,000 件（可混色）',
     leadTime: LEAD,
     relatedSlugs: ['rocker-switch-1-gang-10ax', 'rotary-led-dimmer-250w', 'schuko-socket-16a'],
   },
@@ -109,12 +131,21 @@ export const products: Product[] = [
     shortDescriptionZh: '弹簧复位点动开关，适用于门铃、点动控制及脉冲继电器。',
     description:
       'The NV-S130 returns to rest the moment it is released, making it the right switch for bell circuits, impulse relay systems (latching actuators) and hold-to-run machine stations. The deep-travel push button gives a clear tactile confirmation that reads well in commercial corridors.',
+    descriptionZh:
+      'NV-S130 松手即复位，适用于门铃回路、脉冲继电器系统（自锁执行器）及点动控制工位。4mm 深行程按键触感明确，在商用走廊中操作反馈清晰。',
     features: [
       'Spring-return momentary action, 10A 250V~',
       'Impulse-relay compatible for modern latching circuits',
       'Deep 4mm travel with positive tactile feedback',
       'Interchangeable button caps in five finishes',
       'Suitable for doorbell and hold-to-run duty',
+    ],
+    featuresZh: [
+      '弹簧复位点动，10A 250V~',
+      '兼容脉冲继电器，适配现代自锁电路',
+      '4mm 深行程，触感反馈明确',
+      '五色可选按键盖，可互换',
+      '适用于门铃及点动运行控制',
     ],
     specifications: [
       { label: 'Contact type', value: 'NO, momentary (spring return)' },
@@ -134,7 +165,9 @@ export const products: Product[] = [
     colors: ['Polished Chrome', 'Matte White', 'Gloss Black'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 11 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 11 kg',
     moq: '1,000 pcs (finishes may be mixed)',
+    moqZh: '1,000 件（可混色）',
     leadTime: LEAD,
     relatedSlugs: ['rocker-switch-1-gang-10ax', 'rotary-led-dimmer-250w'],
   },
@@ -151,12 +184,21 @@ export const products: Product[] = [
     shortDescriptionZh: '按压开关旋转调光，后沿控制，LED 筒灯 5W 起可调。',
     description:
       'The NV-S150 is a trailing-edge dimmer developed for the LED era: a stable dimming curve down to 5W loads without flicker or low-end dropout, with a minimum-load setting adjusted by the installer. Press the knob for on/off, turn for level. A replaceable trim ring covers retrofit plates from the NOVA accessory range.',
+    descriptionZh:
+      'NV-S150 是面向 LED 时代开发的后沿调光器：低至 5W 负载仍可保持稳定调光曲线，无闪烁、无低端熄灭，最小负载可由安装人员设定。按压旋钮开关，旋转调节亮度。可更换装饰环适配 NOVA 配件系列的改装面板。',
     features: [
       'Trailing-edge control, 5–250W LED / 40–400W halogen',
       'Flicker-free low-end with installer-adjustable minimum load',
       'Push-on / push-off switching through the knob',
       'Short-circuit and over-temperature protection',
       'Rotary knob interchangeable across NOVA finishes',
+    ],
+    featuresZh: [
+      '后沿控制，LED 5–250W / 卤素灯 40–400W',
+      '低端无闪烁，最小负载可由安装人员调节',
+      '按压式开关，旋钮一体',
+      '短路及过温保护',
+      '旋钮可与 NOVA 全系列颜色互换',
     ],
     specifications: [
       { label: 'Control type', value: 'Trailing edge (reverse phase)' },
@@ -175,7 +217,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black', 'Champagne'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 60 pcs/ctn · 9.5 kg',
+    packagingZh: '双泡罩，1 件/盒 · 60 件/箱 · 9.5 kg',
     moq: '500 pcs',
+    moqZh: '500 件',
     leadTime: LEAD,
     relatedSlugs: ['wifi-smart-dimmer-2g', 'rocker-switch-1-gang-10ax', 'led-downlight-plate'],
   },
@@ -192,12 +236,21 @@ export const products: Product[] = [
     shortDescriptionZh: '密封 20A 翘板开关，透明翻盖，适用于户外及冲洗区域。',
     description:
       'The NV-S660 puts a 20A industrial rocker behind a gasket-sealed, UV-stabilized housing with a hinged clear cover. It holds IP66 under hose-down conditions, which makes it standard equipment for outdoor lighting, pump rooms, food-processing wash areas and Gulf-region exterior circuits.',
+    descriptionZh:
+      'NV-S660 将 20A 工业翘板开关置于密封圈防护、抗 UV 老化外壳中，配透明翻盖。在喷淋条件下仍保持 IP66 防护等级，是户外照明、泵房、食品加工冲洗区及海湾地区室外电路的标配。',
     features: [
       'IP66 sealing with dual-lip gasket and hinged cover',
       'UV-stabilized grey polycarbonate, resistant to Gulf sun loads',
       '20A switch mechanism with silver contacts',
       'Padlockable cover for maintenance lock-out',
       'Cable glands top and bottom, M20 / M25',
+    ],
+    featuresZh: [
+      'IP66 密封，双唇密封圈配翻盖',
+      '抗 UV 灰色聚碳酸酯，耐受海湾地区日照',
+      '20A 开关机构，银触点',
+      '翻盖可挂锁，便于检修锁定',
+      '顶部/底部配 M20/M25 电缆接头',
     ],
     specifications: [
       { label: 'Ingress protection', value: 'IP66' },
@@ -217,7 +270,9 @@ export const products: Product[] = [
     colors: ['Industrial Grey (RAL 7035)'],
     warranty: WTY,
     packaging: 'Inner box, 1 pc · 40 pcs/ctn · 14 kg',
+    packagingZh: '内盒，1 件/盒 · 40 件/箱 · 14 kg',
     moq: '500 pcs',
+    moqZh: '500 件',
     leadTime: LEAD,
     relatedSlugs: ['weatherproof-socket-ip66', 'rocker-switch-1-gang-10ax'],
   },
@@ -236,12 +291,21 @@ export const products: Product[] = [
     shortDescriptionZh: '德标 CEE 7 插座，双擦拭触点，带儿童保护门。',
     description:
       'The NV-E116 is our highest-volume receptacle: a Schuko outlet to CEE 7 / IEC 60884-1 with double-wipe contact springs that hold insertion force across 10,000 cycles. Patented child shutters block single-pole access, and the screwless plate finishes the wall line with the rest of the NOVA range.',
+    descriptionZh:
+      'NV-E116 是我们出货量最大的插座：符合 CEE 7 / IEC 60884-1 的 Schuko 插座，双擦拭触点弹簧在 10,000 次插拔后仍保持插拔力。专利儿童保护门防止单极插入，无框面板与 NOVA 全系列墙面产品线保持统一。',
     features: [
       'CEE 7 standard sheet, 16A 250V~',
       'Double-wipe contacts, 10,000-cycle insertion endurance',
       'Child-protection shutters block single-pole access',
       'Integrated earthing clips both sides',
       'Screwless clip-on faceplate, zero visible fixings',
+    ],
+    featuresZh: [
+      'CEE 7 标准，16A 250V~',
+      '双擦拭触点，10,000 次插拔寿命',
+      '儿童保护门，防止单极插入',
+      '两侧一体接地弹片',
+      '无框卡扣面板，无可见螺丝',
     ],
     specifications: [
       { label: 'Standard', value: 'CEE 7 · IEC 60884-1' },
@@ -263,7 +327,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black', 'Polished Chrome'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 13 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 13 kg',
     moq: '1,000 pcs (finishes may be mixed)',
+    moqZh: '1,000 件（可混色）',
     leadTime: LEAD,
     relatedSlugs: ['british-switched-socket-13a', 'dual-usb-a-outlet', 'usb-c-pd-outlet-30w', 'rocker-switch-1-gang-10ax'],
   },
@@ -280,12 +346,21 @@ export const products: Product[] = [
     shortDescriptionZh: 'BS 1363 双位带开关插座，内置 13A 保险丝，分位独立开关。',
     description:
       'Built to BS 1363-2 for UK, Gulf and Commonwealth markets, the NV-E213 pairs a twin 13A outlet with individually switched rockers and an accessible fuse holder. Shuttered pin entries, brass earth pin and color-coded screws make it the workhorse of UK-spec residential and hospitality programs.',
+    descriptionZh:
+      'NV-E213 按 BS 1363-2 为英国、海湾及英联邦市场设计：双位 13A 插座配独立开关翘板，保险丝座可便捷更换。带保护门插孔、黄铜接地脚及彩色端子螺丝，是英国标准住宅及酒店项目的可靠主力。',
     features: [
       'BS 1363-2 twin outlet, 13A with integral fuse',
       'Individually switched per gang',
       'Shuttered live and neutral entries',
       'Brass earth pin, double-wipe contacts',
       'UKCA-assessed, Gulf-market proven',
+    ],
+    featuresZh: [
+      'BS 1363-2 双位插座，13A 内置保险丝',
+      '每位独立开关',
+      '火线/零线孔带保护门',
+      '黄铜接地脚，双擦拭触点',
+      'UKCA 评估，海湾市场验证',
     ],
     specifications: [
       { label: 'Standard', value: 'BS 1363-2' },
@@ -305,7 +380,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black', 'Polished Chrome'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 14 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 14 kg',
     moq: '1,000 pcs (finishes may be mixed)',
+    moqZh: '1,000 件（可混色）',
     leadTime: LEAD,
     relatedSlugs: ['schuko-socket-16a', 'universal-receptacle-2pe', 'usb-a-usb-c-outlet'],
   },
@@ -322,12 +399,21 @@ export const products: Product[] = [
     shortDescriptionZh: '多标准插座，兼容欧式、英式、美式、澳式及中式插头。',
     description:
       'The NV-E310 solves the mixed-plug problem in one plate: shutters and contact sets arranged to accept Europlug, BS 1363, NEMA 5-15, AS/NZS 3112 and GB 1002 plugs. It is the default receptacle for international hotels, serviced apartments and airport lounges where guest plug types cannot be predicted.',
+    descriptionZh:
+      'NV-E310 在一块面板上解决多国插头问题：保护门与触点组可兼容 Europlug、BS 1363、NEMA 5-15、AS/NZS 3112 及 GB 1002 插头。是国际酒店、服务式公寓及机场贵宾室的默认选择，应对不确定的客用插头类型。',
     features: [
       'Accepts Euro, UK, US, Australian and Chinese plugs',
       'Universal shutter geometry, child-safe single-pole block',
       '16A 250V~ rating with 0.5mm silver-plated contacts',
       'Preferred receptacle for hospitality projects',
       'Interchangeable with all NOVA 86mm-grid products',
+    ],
+    featuresZh: [
+      '兼容欧式、英式、美式、澳式及中式插头',
+      '通用保护门结构，单极防儿童误插',
+      '额定 16A 250V~，0.5mm 镀银触点',
+      '酒店项目首选插座',
+      '可与所有 NOVA 86mm 网格产品互换',
     ],
     specifications: [
       { label: 'Plug compatibility', value: 'CEE 7 · BS 1363 · NEMA 5-15 · AS/NZS 3112 · GB 1002' },
@@ -348,7 +434,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Polished Chrome', 'Champagne'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 13.5 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 13.5 kg',
     moq: '1,000 pcs',
+    moqZh: '1,000 件',
     leadTime: LEAD,
     relatedSlugs: ['schuko-socket-16a', 'usb-a-usb-c-outlet', 'zigbee-scene-panel-4-zone'],
   },
@@ -365,12 +453,21 @@ export const products: Product[] = [
     shortDescriptionZh: 'NEMA 5-15R 双联插座，带防误插保护门，适用于北美项目。',
     description:
       'Developed for North American distributor programs, the NV-E415 is a NEMA 5-15R duplex receptacle with TR shutters that release only under simultaneous two-pole pressure. Break-off tabs allow split-wiring, and the self-grounding yoke speeds rough-in work.',
+    descriptionZh:
+      'NV-E415 面向北美经销商项目开发：NEMA 5-15R 双联插座配 TR 防误插保护门，仅在两极同时受压时打开。可掰离分接片支持分路接线，自接地支架加快粗装施工。',
     features: [
       'NEMA 5-15R, 15A 125V~, TR shutters',
       'Break-off tab for split-circuit wiring',
       'Self-grounding yoke, back and side wiring',
       'Heavy-gauge brass strap and contacts',
       'Complements US-market wiring device lines',
+    ],
+    featuresZh: [
+      'NEMA 5-15R，15A 125V~，TR 保护门',
+      '可掰离分接片，支持分路接线',
+      '自接地支架，支持背部与侧部接线',
+      '加厚黄铜支架与触点',
+      '适配美国市场电工产品线',
     ],
     specifications: [
       { label: 'Standard', value: 'NEMA 5-15R · UL 498 style' },
@@ -389,7 +486,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Ivory'],
     warranty: WTY,
     packaging: 'Inner box, 1 pc · 100 pcs/ctn · 12 kg',
+    packagingZh: '内盒，1 件/盒 · 100 件/箱 · 12 kg',
     moq: '2,000 pcs',
+    moqZh: '2,000 件',
     leadTime: LEAD,
     relatedSlugs: ['schuko-socket-16a', 'dual-usb-a-outlet'],
   },
@@ -406,12 +505,21 @@ export const products: Product[] = [
     shortDescriptionZh: '翻盖密封外壳德式插座，适用于户外及工业环境。',
     description:
       'The NV-E660 packages our Schuko mechanism in the same IP66 enclosure family as the NV-S660 switch: dual-lip gasket, hinged clear cover and M20/M25 gland entries. Facilities teams use it for exterior power, workshops and agricultural buildings where hose-down and dust are routine.',
+    descriptionZh:
+      'NV-E660 将我们的 Schuko 机构封装在与 NV-S660 开关同系列的 IP66 外壳中：双唇密封圈、透明翻盖及 M20/M25 电缆接头。设施团队将其用于室外供电、车间及农业建筑，这些场所日常需要冲洗且灰尘较多。',
     features: [
       'IP66 enclosure with padlockable hinged cover',
       '16A Schuko mechanism with child shutters',
       'UV-stabilized grey polycarbonate housing',
       'M20 / M25 cable glands top and bottom',
       'Gulf and tropical climate proven',
+    ],
+    featuresZh: [
+      'IP66 外壳，翻盖可挂锁',
+      '16A Schuko 机构，带儿童保护门',
+      '抗 UV 灰色聚碳酸酯外壳',
+      '顶部/底部 M20/M25 电缆接头',
+      '海湾及热带气候验证',
     ],
     specifications: [
       { label: 'Ingress protection', value: 'IP66' },
@@ -431,7 +539,9 @@ export const products: Product[] = [
     colors: ['Industrial Grey (RAL 7035)'],
     warranty: WTY,
     packaging: 'Inner box, 1 pc · 40 pcs/ctn · 15 kg',
+    packagingZh: '内盒，1 件/盒 · 40 件/箱 · 15 kg',
     moq: '500 pcs',
+    moqZh: '500 件',
     leadTime: LEAD,
     relatedSlugs: ['weatherproof-switch-ip66', 'schuko-socket-16a'],
   },
@@ -450,12 +560,21 @@ export const products: Product[] = [
     shortDescriptionZh: '标准面板内嵌双 USB-A 端口，单口 2.4A，适用于客房与办公。',
     description:
       'The NV-U212 replaces a blank plate with two USB-A charging ports rated 5V/2.4A each — the configuration hospitality buyers still standardize on for bedside and desk power. EMI filtering keeps the radio-quiet profile hotel Wi-Fi surveys demand, and the converter module is replaceable from the front.',
+    descriptionZh:
+      'NV-U212 用两个 USB-A 充电端口取代空白面板，单口 5V/2.4A——这是酒店采购方仍为床头与桌面供电标准化的配置。EMI 滤波满足酒店 Wi-Fi 勘测对电磁静默的要求，转换模块可从正面更换。',
     features: [
       '2 × USB-A, 5V/2.4A each, 12W total',
       'Replaceable converter module, service from the front',
       'EMI filtering to EN 55032 Class B',
       'Over-current and over-temperature protection',
       'Combines with Schuko or universal receptacles',
+    ],
+    featuresZh: [
+      '2 × USB-A，单口 5V/2.4A，共 12W',
+      '转换模块可更换，正面即可维护',
+      'EMI 滤波符合 EN 55032 Class B',
+      '过流及过温保护',
+      '可与 Schuko 或万能插座组合安装',
     ],
     specifications: [
       { label: 'Output', value: '2 × 5V / 2.4A (12W total)' },
@@ -474,7 +593,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black', 'Polished Chrome'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 12.5 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 12.5 kg',
     moq: '1,000 pcs',
+    moqZh: '1,000 件',
     leadTime: LEAD,
     relatedSlugs: ['usb-c-pd-outlet-30w', 'usb-a-usb-c-outlet', 'schuko-socket-16a'],
   },
@@ -491,12 +612,21 @@ export const products: Product[] = [
     shortDescriptionZh: '单 USB-C PD 端口 30W，可为手机、平板及多数笔记本充电。',
     description:
       'The NV-U330 delivers USB-C Power Delivery at 30W: full-speed charging for MacBook Air-class laptops, tablets and every current phone. Active PD negotiation and a GaN-based converter stage keep the module cool inside the wall, and a status LED confirms live output without lighting up a dark bedroom.',
+    descriptionZh:
+      'NV-U330 提供 30W USB-C PD 快充：可为 MacBook Air 级别笔记本、平板及当前主流手机全速充电。主动 PD 协议协商与 GaN 转换级让墙内模块保持低温，状态 LED 可确认输出状态，又不至于在暗室中过亮。',
     features: [
       'USB-C PD 3.0 output, 30W (5/9/12/15/20V profiles)',
       'GaN converter stage, cool wall operation',
       'Active PD negotiation with connected devices',
       'Sub-lumen status LED, dusk-friendly',
       'Charges laptops, tablets and phones from one plate',
+    ],
+    featuresZh: [
+      'USB-C PD 3.0 输出，30W（5/9/12/15/20V 档位）',
+      'GaN 转换级，墙内低温运行',
+      '与连接设备主动协商 PD 协议',
+      '亚流明状态灯，夜间不刺眼',
+      '一块面板即可为笔记本、平板和手机充电',
     ],
     specifications: [
       { label: 'Output', value: 'USB-C PD 3.0, 30W max' },
@@ -517,7 +647,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 13 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 13 kg',
     moq: '1,000 pcs',
+    moqZh: '1,000 件',
     leadTime: LEAD,
     relatedSlugs: ['usb-a-usb-c-outlet', 'gan-module-45w', 'schuko-socket-16a'],
   },
@@ -534,12 +666,21 @@ export const products: Product[] = [
     shortDescriptionZh: 'USB-C PD 与 USB-A 同板设计，兼顾新旧设备，适用于办公与酒店。',
     description:
       'Guests carry both cable types, so the NV-U420 puts one 20W USB-C PD port beside a 5V/2.4A USB-A port on a single plate. Port power is negotiated independently, and the mixed layout fits every 86mm-box program in the NOVA range without an oversized plate.',
+    descriptionZh:
+      '住客常携带两种线缆，因此 NV-U420 在单面板上并排布置一个 20W USB-C PD 端口与一个 5V/2.4A USB-A 端口。两端口独立协商功率，混合布局适配 NOVA 系列所有 86mm 底盒方案，无需加大面板。',
     features: [
       'USB-C 20W PD + USB-A 5V/2.4A, independent negotiation',
       'One plate covers legacy and current devices',
       'GaN converter, ≥ 88% efficiency',
       'Full protection suite: OCP, OVP, OTP',
       'Matches all NOVA plate finishes',
+    ],
+    featuresZh: [
+      'USB-C 20W PD + USB-A 5V/2.4A，独立协商',
+      '一块面板兼容新旧设备',
+      'GaN 转换器，效率 ≥ 88%',
+      '完整保护：OCP、OVP、OTP',
+      '匹配 NOVA 全系列面板颜色',
     ],
     specifications: [
       { label: 'Output', value: 'USB-C 20W PD · USB-A 5V/2.4A' },
@@ -559,7 +700,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black', 'Polished Chrome'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 13 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 13 kg',
     moq: '1,000 pcs',
+    moqZh: '1,000 件',
     leadTime: LEAD,
     relatedSlugs: ['usb-c-pd-outlet-30w', 'dual-usb-a-outlet', 'universal-receptacle-2pe'],
   },
@@ -576,12 +719,21 @@ export const products: Product[] = [
     shortDescriptionZh: '2 模块面板氮化镓插芯，45W 输出，为本系列最高功率。',
     description:
       'The NV-U445 is a 45W GaN charging module built to the European 2-module format: it snaps into the NV-P102 faceplate beside a socket or switch insert. One port negotiates PD up to 45W for laptop charging; the second serves USB-A. Service crews replace the module in under a minute, without disturbing the wall.',
+    descriptionZh:
+      'NV-U445 是 45W GaN 充电模块，按欧式 2 模块规格设计：可卡入 NV-P102 面板，与插座或开关插芯并排。C 口 PD 最高 45W，可为笔记本充电；A 口供普通设备。维护人员可在 1 分钟内更换模块，无需拆墙。',
     features: [
       'USB-C PD 45W (PPS supported) + USB-A 12W',
       'European 2-module format, tool-free snap-in',
       'GaN converter with active thermal rollback',
       'Front-serviceable module, 1-minute swap',
       'PPS profile for Samsung and modern Android fast charge',
+    ],
+    featuresZh: [
+      'USB-C PD 45W（支持 PPS）+ USB-A 12W',
+      '欧式 2 模块规格，免工具卡入',
+      'GaN 转换器，主动热降额',
+      '正面可维护模块，1 分钟快速更换',
+      '支持 PPS，适配三星及主流安卓快充',
     ],
     specifications: [
       { label: 'Output', value: 'USB-C 45W PD/PPS · USB-A 5V/2.4A' },
@@ -600,7 +752,9 @@ export const products: Product[] = [
     colors: ['Graphite', 'Matte White'],
     warranty: WTY,
     packaging: 'Inner box, 1 pc · 60 pcs/ctn · 9 kg',
+    packagingZh: '内盒，1 件/盒 · 60 件/箱 · 9 kg',
     moq: '500 pcs',
+    moqZh: '500 件',
     leadTime: LEAD,
     relatedSlugs: ['modular-faceplate-2-module', 'usb-c-pd-outlet-30w'],
   },
@@ -619,12 +773,21 @@ export const products: Product[] = [
     shortDescriptionZh: '钢化玻璃电容触控开关，支持 Wi-Fi 控制与涂鸦智能定时。',
     description:
       'The NV-T110 replaces a mechanical rocker with a tempered-glass capacitive panel that pairs to 2.4GHz Wi-Fi through the Smart Life / Tuya platform. Installers commission in about two minutes; residents get app control, scheduling, countdown timers and voice control through Alexa and Google Home. No hub required.',
+    descriptionZh:
+      'NV-T110 以钢化玻璃电容面板取代机械翘板，通过 Smart Life / 涂鸦平台接入 2.4GHz Wi-Fi。安装人员约 2 分钟即可完成配网；用户可通过 APP 控制、定时、倒计时，并支持 Alexa 与 Google Home 语音控制。无需网关。',
     features: [
       'Wi-Fi 2.4GHz, no hub required (Smart Life / Tuya)',
       'Tempered-glass panel, capacitive touch, LED backlight',
       'Schedules, countdown timers and grouping in app',
       'Works with Amazon Alexa and Google Home',
       'Neutral required · retrofit neutral-free version on request',
+    ],
+    featuresZh: [
+      'Wi-Fi 2.4GHz，无需网关（Smart Life / 涂鸦）',
+      '钢化玻璃面板，电容触控，LED 背光',
+      'APP 支持定时、倒计时及分组',
+      '兼容 Amazon Alexa 与 Google Home',
+      '需零线 · 可提供免零线改装版本',
     ],
     specifications: [
       { label: 'Connectivity', value: 'Wi-Fi 2.4GHz (Smart Life / Tuya)' },
@@ -645,7 +808,9 @@ export const products: Product[] = [
     colors: ['Black Glass', 'White Glass'],
     warranty: WTY,
     packaging: 'Colour box, 1 pc · 60 pcs/ctn · 10 kg',
+    packagingZh: '彩盒，1 件/盒 · 60 件/箱 · 10 kg',
     moq: '500 pcs',
+    moqZh: '500 件',
     leadTime: LEAD,
     relatedSlugs: ['wifi-smart-dimmer-2g', 'zigbee-scene-panel-4-zone', 'smart-socket-metered-16a'],
   },
@@ -662,12 +827,21 @@ export const products: Product[] = [
     shortDescriptionZh: '双路玻璃触控调光，支持 APP、语音及滑动调光，适配 LED 负载。',
     description:
       'The NV-T220 dims two independent LED circuits from one glass panel: touch for on/off, slide for level, or control remotely through Smart Life. Trailing-edge output is tuned for low minimum loads, so dimmable LED downlights hold a stable low-end without flicker — the detail that decides whether a hotel project signs off.',
+    descriptionZh:
+      'NV-T220 在一块玻璃面板上独立调光两路 LED：触控开关，滑动调光，也可通过 Smart Life 远程控制。后沿输出针对低最小负载调校，可调光 LED 筒灯在低亮度端稳定无闪烁——这正是酒店项目能否验收的关键细节。',
     features: [
       '2 × 150W LED trailing-edge dimming channels',
       'Touch on/off + slide brightness, or full app control',
       'Stable low-end from 5W, no flicker',
       'Scene and schedule support via Smart Life',
       'Alexa and Google Home voice control',
+    ],
+    featuresZh: [
+      '2 × 150W LED 后沿调光通道',
+      '触控开关 + 滑动调光，或全 APP 控制',
+      '5W 起稳定低亮，无闪烁',
+      'Smart Life 支持场景与定时',
+      '支持 Alexa 与 Google Home 语音控制',
     ],
     specifications: [
       { label: 'Connectivity', value: 'Wi-Fi 2.4GHz (Smart Life / Tuya)' },
@@ -687,7 +861,9 @@ export const products: Product[] = [
     colors: ['Black Glass', 'White Glass'],
     warranty: WTY,
     packaging: 'Colour box, 1 pc · 60 pcs/ctn · 10.5 kg',
+    packagingZh: '彩盒，1 件/盒 · 60 件/箱 · 10.5 kg',
     moq: '500 pcs',
+    moqZh: '500 件',
     leadTime: LEAD,
     relatedSlugs: ['wifi-touch-switch-1g', 'rotary-led-dimmer-250w', 'zigbee-scene-panel-4-zone'],
   },
@@ -704,12 +880,21 @@ export const products: Product[] = [
     shortDescriptionZh: '德式智能插座，单口计量、远程开关及用电记录。',
     description:
       'The NV-T316 is a connected Schuko outlet: switch it remotely, set schedules, and read live power plus cumulative kWh per outlet from the app. Facility managers use it for after-hours load control and energy audits; residents use it for heater and appliance automation with hard 16A protection.',
+    descriptionZh:
+      'NV-T316 是一款联网 Schuko 插座：可远程开关、设定定时，并在 APP 中查看实时功率及单口累计 kWh。设施管理人员用于非工作时段负载控制与能耗审计；家庭用户用于取暖器与家电自动化，具备硬 16A 保护。',
     features: [
       'Live power (W) and cumulative kWh per outlet',
       'Remote switching and schedules via Smart Life',
       '16A Schuko mechanism with child shutters',
       'Overload cutoff with app notification',
       'Consumption history export for energy audits',
+    ],
+    featuresZh: [
+      '单口实时功率（W）与累计 kWh',
+      'Smart Life 远程开关与定时',
+      '16A Schuko 机构，带儿童保护门',
+      '过载自动断电并推送 APP 通知',
+      '用电历史可导出，便于能耗审计',
     ],
     specifications: [
       { label: 'Connectivity', value: 'Wi-Fi 2.4GHz (Smart Life / Tuya)' },
@@ -728,7 +913,9 @@ export const products: Product[] = [
     colors: ['Matte White'],
     warranty: WTY,
     packaging: 'Colour box, 1 pc · 60 pcs/ctn · 11 kg',
+    packagingZh: '彩盒，1 件/盒 · 60 件/箱 · 11 kg',
     moq: '500 pcs',
+    moqZh: '500 件',
     leadTime: LEAD,
     relatedSlugs: ['schuko-socket-16a', 'wifi-touch-switch-1g'],
   },
@@ -745,12 +932,21 @@ export const products: Product[] = [
     shortDescriptionZh: '免电池 Zigbee 场景控制器，四区背光，适用于酒店与办公项目。',
     description:
       'The NV-T440 is a self-powered Zigbee scene controller: four zones trigger lighting scenes through the project hub with no battery and no neutral wiring, because the press generates its own energy. Installers bind zones in seconds; hotel and office operators use it at every entrance as the scene recall point.',
+    descriptionZh:
+      'NV-T440 是自供电 Zigbee 场景控制器：四区按键通过项目网关触发灯光场景，无需电池、无需零线，按压自发电。安装人员数秒完成绑定；酒店与办公运营方将其装于各入口作为场景召回面板。',
     features: [
       'Zigbee 3.0, self-powered — no battery, no neutral',
       '4 scene zones, each binding up to 30 devices',
       'Enocean-style energy harvesting push generator',
       '2-year memory retention of bindings',
       'Ideal entrance-panel for hotel and office scenes',
+    ],
+    featuresZh: [
+      'Zigbee 3.0，自供电——无需电池与零线',
+      '4 个场景区，每区最多绑定 30 个设备',
+      'Enocean 式压电取能发电机构',
+      '绑定关系断电记忆 2 年',
+      '酒店与办公场景的理想入口面板',
     ],
     specifications: [
       { label: 'Connectivity', value: 'Zigbee 3.0, hub required' },
@@ -769,7 +965,9 @@ export const products: Product[] = [
     colors: ['Black Glass'],
     warranty: WTY,
     packaging: 'Colour box, 1 pc · 60 pcs/ctn · 9 kg',
+    packagingZh: '彩盒，1 件/盒 · 60 件/箱 · 9 kg',
     moq: '500 pcs',
+    moqZh: '500 件',
     leadTime: LEAD,
     relatedSlugs: ['wifi-touch-switch-1g', 'wifi-smart-dimmer-2g', 'rocker-switch-2-gang-2-way'],
   },
@@ -788,12 +986,21 @@ export const products: Product[] = [
     shortDescriptionZh: '无框空白面板，卡扣适配全系列功能件，系列标志性外观。',
     description:
       'The NV-P001 is the plate that defines the NOVA look: a 1.4mm screwless face with a 2mm shadow gap, clipped over switches, sockets and modules alike. It snaps on by hand, aligns flush to the wall in one action, and can be removed for service without tools.',
+    descriptionZh:
+      'NV-P001 是定义 NOVA 外观的面板：1.4mm 厚无框面板配 2mm 阴影缝，可卡扣覆盖开关、插座与模块。单手按压即可安装，一步贴合墙面，维护时可徒手拆卸。',
     features: [
       'Screwless clip-on design, 2mm shadow gap',
       'Fits every mechanism in the NOVA 86mm range',
       'Tool-free removal for service and re-decoration',
       'Available in all five range finishes',
       '1.4mm wall section, UV-stable colorants',
+    ],
+    featuresZh: [
+      '无框卡扣设计，2mm 阴影缝',
+      '适配 NOVA 86mm 全系列功能件',
+      '免工具拆卸，便于维护与翻新',
+      '提供全系列五种颜色',
+      '1.4mm 壁厚，抗 UV 色母',
     ],
     specifications: [
       { label: 'Type', value: 'Blank screwless faceplate' },
@@ -812,7 +1019,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black', 'Polished Chrome', 'Champagne', 'Graphite'],
     warranty: WTY,
     packaging: 'Bulk box · 500 pcs/ctn · 14 kg',
+    packagingZh: '散装盒 · 500 件/箱 · 14 kg',
     moq: '1,000 pcs (finishes may be mixed)',
+    moqZh: '1,000 件（可混色）',
     leadTime: LEAD,
     relatedSlugs: ['rocker-switch-1-gang-10ax', 'schuko-socket-16a', 'modular-faceplate-2-module'],
   },
@@ -829,12 +1038,21 @@ export const products: Product[] = [
     shortDescriptionZh: '欧式 2 模块框架，可混搭开关、插座、USB 及数据插芯。',
     description:
       'The NV-P102 is the European 2-module frame that lets one plate carry whatever the room needs: a Schuko insert beside a USB module, a data jack beside a switch. Inserts snap in tool-free and stay interchangeable for the life of the installation.',
+    descriptionZh:
+      'NV-P102 是欧式 2 模块框架，让一块面板承载房间所需任意组合：Schuko 插芯旁配 USB 模块，数据口旁配开关。插芯免工具卡入，且在安装生命周期内可随时更换。',
     features: [
       'Standard European 2-module (55 × 55mm) format',
       'Mix and match NOVA and compatible inserts',
       'Tool-free snap-in assembly',
       'Center bridge aligns inserts to one plane',
       'Also hosts the NV-U445 GaN charge module',
+    ],
+    featuresZh: [
+      '标准欧式 2 模块（55 × 55mm）规格',
+      '可混搭 NOVA 及兼容插芯',
+      '免工具卡入组装',
+      '中心桥将插芯对齐同一平面',
+      '亦可安装 NV-U445 GaN 充电模块',
     ],
     specifications: [
       { label: 'Format', value: 'European 2-module (2 × 55 × 55mm)' },
@@ -852,7 +1070,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black', 'Polished Chrome', 'Graphite'],
     warranty: WTY,
     packaging: 'Bulk box · 400 pcs/ctn · 13 kg',
+    packagingZh: '散装盒 · 400 件/箱 · 13 kg',
     moq: '1,000 pcs',
+    moqZh: '1,000 件',
     leadTime: LEAD,
     relatedSlugs: ['gan-module-45w', 'screwless-wall-plate', 'tv-network-outlet'],
   },
@@ -869,12 +1089,21 @@ export const products: Product[] = [
     shortDescriptionZh: '32mm 深明装底盒，适用于混凝土墙及改造项目，86mm 网格。',
     description:
       'Where chasing concrete is not economical, the NV-P086 carries the full NOVA range on the wall surface: a 32mm-deep box with molded landings for conduit entry, cable clamps and the same 60mm fixing centres as our flush products.',
+    descriptionZh:
+      '在混凝土墙面开槽不经济时，NV-P086 可将全系列 NOVA 产品明装于墙面：32mm 深底盒，带一体化线管入口平台、压线夹，安装孔距 60mm，与暗装产品一致。',
     features: [
       '32mm depth fits smart modules and dimmer bodies',
       'Molded conduit landings, 20mm top and bottom',
       'Integral cable clamps, no loose parts',
       'Same 60mm centres as flush range',
       'Powder-coat-friendly surface for project colors',
+    ],
+    featuresZh: [
+      '32mm 深度可容纳智能模块与调光器本体',
+      '顶部/底部一体化 20mm 线管入口平台',
+      '内置压线夹，无松散零件',
+      '安装孔距 60mm，与暗装系列一致',
+      '表面适合喷涂，便于项目定制颜色',
     ],
     specifications: [
       { label: 'Depth', value: '32mm' },
@@ -892,7 +1121,9 @@ export const products: Product[] = [
     colors: ['Matte White'],
     warranty: WTY,
     packaging: 'Bulk box · 300 pcs/ctn · 12 kg',
+    packagingZh: '散装盒 · 300 件/箱 · 12 kg',
     moq: '2,000 pcs',
+    moqZh: '2,000 件',
     leadTime: LEAD,
     relatedSlugs: ['screwless-wall-plate', 'modular-faceplate-2-module'],
   },
@@ -909,12 +1140,21 @@ export const products: Product[] = [
     shortDescriptionZh: '同板集成同轴 F 头与 Cat6 网口，免工具接线。',
     description:
       'The NV-P502 puts a screened coax F-outlet and a Cat6 RJ45 jack behind one NOVA plate. Both modules terminate tool-free — IDC contacts for the Cat6 jack, captive F-connector for coax — and the assembly is shielded end-to-end for Gigabit-class networks.',
+    descriptionZh:
+      'NV-P502 在同一块 NOVA 面板后集成屏蔽同轴 F 头与 Cat6 RJ45 网口。两个模块均免工具接线——Cat6 网口用 IDC 触点，同轴用固定式 F 头——整体屏蔽端到端，满足千兆网络要求。',
     features: [
       'Cat6 RJ45 jack, tool-free IDC termination',
       'Screened coax F-connector, 75Ω',
       'Shielded assembly for Gigabit networks',
       'Modules removable independently',
       'T568A / T568B compatible labeling',
+    ],
+    featuresZh: [
+      'Cat6 RJ45 网口，IDC 免工具接线',
+      '屏蔽同轴 F 头，75Ω',
+      '整体屏蔽，适配千兆网络',
+      '两模块可独立拆卸',
+      '兼容 T568A/T568B 标识',
     ],
     specifications: [
       { label: 'Data module', value: 'Cat6 UTP/FTP RJ45, IDC' },
@@ -932,7 +1172,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 12 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 12 kg',
     moq: '1,000 pcs',
+    moqZh: '1,000 件',
     leadTime: LEAD,
     relatedSlugs: ['modular-faceplate-2-module', 'screwless-wall-plate'],
   },
@@ -949,12 +1191,21 @@ export const products: Product[] = [
     shortDescriptionZh: '硬接线出线座，带防拉线夹，适用于固定电器及家具供电。',
     description:
       'The NV-P616 provides a clean, code-compliant cord exit where a plug is not wanted: a 16A terminal block behind a plate with an adjustable strain-relief clamp that grips 6–10mm cables. Kitchens, furniture power and fixed appliance connections are the standard applications.',
+    descriptionZh:
+      'NV-P616 在不需要插头的地方提供整洁、合规的出线方案：面板后装 16A 端子台，配可调防拉线夹，夹持 6–10mm 电缆。厨房、家具供电及固定电器连接是典型应用。',
     features: [
       '16A terminal block, 3-pole',
       'Adjustable strain-relief clamp, 6–10mm cables',
       'Captive cord-grip screws cannot be dropped',
       'Flush or surface installation',
       'Completes appliance and furniture power circuits',
+    ],
+    featuresZh: [
+      '16A 端子台，3 极',
+      '可调防拉线夹，适配 6–10mm 电缆',
+      '防松压线螺丝，不易脱落',
+      '暗装或明装均可',
+      '完善电器与家具供电回路',
     ],
     specifications: [
       { label: 'Rated voltage', value: '250V~' },
@@ -972,7 +1223,9 @@ export const products: Product[] = [
     colors: ['Matte White', 'Gloss Black'],
     warranty: WTY,
     packaging: 'Double blister, 1 pc/box · 100 pcs/ctn · 11 kg',
+    packagingZh: '双泡罩，1 件/盒 · 100 件/箱 · 11 kg',
     moq: '1,000 pcs',
+    moqZh: '1,000 件',
     leadTime: LEAD,
     relatedSlugs: ['schuko-socket-16a', 'surface-mount-box-86mm'],
   },

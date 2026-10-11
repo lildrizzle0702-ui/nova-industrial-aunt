@@ -82,7 +82,7 @@ export function Header() {
   return (
     <header className={`site-header ${scrolled ? 'site-header--scrolled' : ''}`}>
       <div className="container site-header__inner">
-        <Link to="/" className="site-header__brand" aria-label={`${navigation.headerCta.label || 'Home'}`}>
+        <Link to="/" className="site-header__brand" aria-label={t('footer.logoAlt')}>
           <Logo />
         </Link>
 
@@ -129,7 +129,7 @@ export function Header() {
               <span className="menu-toggle__line" data-line="1" />
               <span className="menu-toggle__line" data-line="2" />
             </span>
-            <span className="visually-hidden">{menuOpen ? 'Close menu' : 'Open menu'}</span>
+            <span className="visually-hidden">{menuOpen ? t('nav.closeMenu') : t('nav.openMenu')}</span>
           </button>
         </div>
       </div>
@@ -150,7 +150,7 @@ export function Header() {
                 style={{ transitionDelay: menuOpen ? `${80 + i * 40}ms` : '0ms' }}
                 tabIndex={menuOpen ? 0 : -1}
               >
-                {item.label}
+                {t(navKey(item.href))}
               </NavLink>
             ))}
           </nav>

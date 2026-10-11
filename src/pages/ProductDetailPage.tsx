@@ -29,7 +29,7 @@ const BASE_SLIDES: GallerySlide[] = [
 export default function ProductDetailPage() {
   const { t, locale } = useLocale();
   const isZh = (locale as Locale) === 'zh';
-  const { productName, productShort, categoryName } = useDisplay();
+  const { productName, productShort, categoryName, applicationLabel, colorName, specLabel } = useDisplay();
   const { slug = '' } = useParams();
   const product = productBySlug(slug);
   const [active, setActive] = useState(0);
@@ -58,7 +58,7 @@ export default function ProductDetailPage() {
     return (
       <div className="page-hero">
         <div className="container">
-          <p className="eyebrow">Error 404</p>
+          <p className="eyebrow">{t('common.error')} 404</p>
           <h1 className="h1">{t('pdp.notFound')}</h1>
           <p className="lead">
             {t('pdp.notFoundDesc')}
@@ -115,7 +115,7 @@ export default function ProductDetailPage() {
               ...BASE_SLIDES,
               ...resolveProductGallery(product.slug, product.images?.gallery).map((asset, i) => ({
                 key: `photo-${i}`,
-                label: `Photo ${i + 1}`,
+                label: t('common.photo').replace('{n}', String(i + 1)),
                 asset,
               })),
             ];
@@ -142,11 +142,12 @@ export default function ProductDetailPage() {
                       images={product.images}
                       view={slide.view}
                       title={stageTitle}
+                      alt={product.name}
                     />
                   ) : (
                     <Media
                       src={slide.asset!.src}
-                      alt={slide.asset!.alt ?? stageTitle}
+                      alt={slide.asset!.alt ?? product.name}
                       objectPosition={slide.asset!.position}
                       fallback={
                         <ProductMedia
@@ -154,7 +155,8 @@ export default function ProductDetailPage() {
                           spec={product.visual}
                           images={product.images}
                           view="hero"
-                          title=""
+                          title={product.name}
+                          alt={product.name}
                         />
                       }
                     />
@@ -176,12 +178,13 @@ export default function ProductDetailPage() {
                           spec={product.visual}
                           images={product.images}
                           view={s.view}
-                          title=""
+                          title={product.name}
+                          alt={product.name}
                         />
                       ) : (
                         <Media
                           src={s.asset!.src}
-                          alt=""
+                          alt={s.asset!.alt ?? product.name}
                           objectPosition={s.asset!.position}
                           fallback={
                             <ProductMedia
@@ -189,7 +192,8 @@ export default function ProductDetailPage() {
                               spec={product.visual}
                               images={product.images}
                               view="hero"
-                              title=""
+                              title={product.name}
+                              alt={product.name}
                             />
                           }
                         />
@@ -232,26 +236,26 @@ export default function ProductDetailPage() {
           <dl className="pdp__commercial">
             <div>
               <dt className="mono">{t('pdp.moq')}</dt>
-              <dd>{product.moq}</dd>
+              <dd>{isZh && product.moqZh ? product.moqZh : product.moq}</dd>
             </div>
             <div>
               <dt className="mono">{t('pdp.leadTime')}</dt>
-              <dd>{product.leadTime}</dd>
+              <dd>{isZh && product.leadTimeZh ? product.leadTimeZh : product.leadTime}</dd>
             </div>
             <div>
               <dt className="mono">{t('pdp.finishes')}</dt>
-              <dd>{product.colors.join(' · ')}</dd>
+              <dd>{product.colors.map(colorName).join(' · ')}</dd>
             </div>
             <div>
               <dt className="mono">{t('pdp.warranty')}</dt>
-              <dd>{product.warranty}</dd>
+              <dd>{isZh && product.warrantyZh ? product.warrantyZh : product.warranty}</dd>
             </div>
             <div className="pdp__commercial--wide">
               <dt className="mono">{t('pdp.oem')}</dt>
               <dd>
-                {pdpConfig.oemNote} —{' '}
+                {isZh && pdpConfig.oemNoteZh ? pdpConfig.oemNoteZh : pdpConfig.oemNote} —{' '}
                 <Link to={pdpConfig.oemHref} className="text-link">
-                  how it works
+                  {t('pdp.oemHow')}
                 </Link>
               </dd>
             </div>
@@ -288,7 +292,7 @@ export default function ProductDetailPage() {
               <tbody>
                 {product.specifications.map((row) => (
                   <tr key={row.label}>
-                    <th scope="row">{row.label}</th>
+                    <th scope="row">{specLabel(row.label)}</th>
                     <td className="mono">{row.value}</td>
                   </tr>
                 ))}
@@ -303,7 +307,7 @@ export default function ProductDetailPage() {
               </p>
               <ul className="apps-list">
                 {product.applications.map((app) => (
-                  <li key={app}>{app}</li>
+                  <li key={app}>{applicationLabel(app)}</li>
                 ))}
               </ul>
             </section>
@@ -314,7 +318,7 @@ export default function ProductDetailPage() {
               </p>
               <ul className="cert-strip">
                 {certs.map((cert) => (
-                  <li key={cert.id} className="cert-chip cert-chip--lg mono" title={cert.description}>
+                  <li key={cert.id} className="cert-chip cert-chip--lg mono" title={isZh && cert.descriptionZh ? cert.descriptionZh : cert.description}>
                     {cert.code}
                   </li>
                 ))}
@@ -322,9 +326,9 @@ export default function ProductDetailPage() {
               <p className="caption">
                 {t('pdp.certsNote')}{' '}
                 <Link to="/quality" className="text-link">
-                  Quality &amp; Compliance
+                  {t('quality.label')}
                 </Link>
-                .
+                。
               </p>
             </section>
 
@@ -332,7 +336,7 @@ export default function ProductDetailPage() {
               <p className="eyebrow">
                 <span className="mono">04</span>{t('pdp.packaging')}
               </p>
-              <p className="body-sm mono pdp__packing-line">{product.packaging}</p>
+              <p className="body-sm mono pdp__packing-line">{isZh && product.packagingZh ? product.packagingZh : product.packaging}</p>
             </section>
           </div>
         </div>
@@ -355,7 +359,7 @@ export default function ProductDetailPage() {
         <div className="container">
           <div className="section-head">
             <div className="section-head__main">
-              <p className="eyebrow">Related Products</p>
+              <p className="eyebrow">{t('pdp.related')}</p>
               <h2 className="h2">{t('pdp.relatedTitle')}</h2>
             </div>
           </div>

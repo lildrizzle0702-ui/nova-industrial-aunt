@@ -8,8 +8,8 @@ export default function NotFoundPage() {
   const { t } = useLocale();
   const { categoryName } = useDisplay();
   usePageMeta({
-    title: 'Page Not Found',
-    description: 'The page you requested does not exist. Browse the NOVA INDUSTRIAL catalogue or return home.',
+    title: t('404.metaTitle'),
+    description: t('404.metaDesc'),
     path: '/404',
   });
 

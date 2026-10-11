@@ -7,9 +7,11 @@ import { usePageMeta } from '../lib/seo';
 import { contact } from '../config/contact';
 import { quotePageMeta } from '../config/hero';
 import { useLocale } from '../lib/i18n';
+import { useDisplay } from '../lib/display';
 
 export default function RequestQuotePage() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const isZh = locale === 'zh';
   const [searchParams] = useSearchParams();
   const inquiry = useInquiry();
   const presetSlug = searchParams.get('product');
@@ -42,10 +44,10 @@ export default function RequestQuotePage() {
               {t('quote.desc')}
             </p>
           </div>
-          <ul className="catalogue-meta mono" aria-label="Commercial terms">
+          <ul className="catalogue-meta mono" aria-label={t('products.metaAria')}>
             {quotePageMeta.map((m) => (
               <li key={m.label}>
-                <span className="catalogue-meta__num">{m.label}</span> {m.value}
+                <span className="catalogue-meta__num">{m.label}</span> {isZh ? m.valueZh : m.value}
               </li>
             ))}
           </ul>
@@ -57,8 +59,10 @@ export default function RequestQuotePage() {
           <QuoteRequestForm
             note={
               presetProduct
-                ? `We’ve staged ${presetProduct.name} (${presetProduct.sku}) below — add quantities and requirements.`
-                : 'No products selected yet — describe what you need in the message field, or add products from the catalogue first.'
+                ? t('quote.note.preset')
+                    .replace('{name}', useDisplay().productName(presetProduct))
+                    .replace('{sku}', presetProduct.sku)
+                : t('quote.note.empty')
             }
           />
         </div>
