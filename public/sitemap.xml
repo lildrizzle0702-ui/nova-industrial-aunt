@@ -9,4 +9,13 @@
   <url><loc>https://www.novaindustrial.example/request-quote</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.novaindustrial.example/inquiry</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://www.novaindustrial.example/compare</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights/how-to-choose-wall-switches-for-the-european-market</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights/schuko-vs-bs-1363-a-buyers-guide-to-socket-standards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights/what-moq-really-means-when-sourcing-wiring-devices-from-china</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights/ce-ukca-rohs-certification-guide-for-electrical-accessories-importers</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights/oem-vs-odm-which-model-fits-your-electrical-product-line</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights/usb-c-pd-wall-outlets-what-distributors-need-to-know-in-2026</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights/5-quality-checks-before-approving-a-switch-factory-in-china</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.novaindustrial.example/insights/sea-freight-guide-shipping-electrical-components-from-ningbo-port</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

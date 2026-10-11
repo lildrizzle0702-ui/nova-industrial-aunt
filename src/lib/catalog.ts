@@ -672,6 +672,19 @@ export const catalog: Record<string, { en: string; zh: string }> = {
   'float.contactWeChat': { en: 'Scan on WeChat', zh: '微信咨询' },
   'float.wechatAlt': { en: 'WeChat QR code', zh: '微信二维码' },
   'mobileCta.quote': { en: 'Request a Quote', zh: '询价' },
+
+  /* ---------- Insights ---------- */
+  'insights.label': { en: 'Insights', zh: '洞察' },
+  'insights.title': { en: 'Buyer guides for wiring devices.', zh: '电工产品采购商指南。' },
+  'insights.desc': { en: 'Practical guides on standards, sourcing, logistics, and product trends for electrical accessories importers.', zh: '面向电气配件进口商的标准、采购、物流与产品趋势实用指南。' },
+  'insights.readTime': { en: 'Read time', zh: '阅读时间' },
+  'insights.category': { en: 'Category', zh: '分类' },
+  'insights.published': { en: 'Published', zh: '发布日期' },
+  'insights.cta': { en: 'Request a quote for your project', zh: '为项目询价' },
+  'insights.back': { en: 'Back to Insights', zh: '返回洞察' },
+  'insights.all': { en: 'All Insights', zh: '全部文章' },
+  'insights.notFound': { en: 'Article not found', zh: '未找到文章' },
+  'insights.notFoundDesc': { en: 'The article you are looking for does not exist or may have been moved.', zh: '您查找的文章不存在或已移除。' },
 };
 
 export type I18nKey = keyof typeof catalog;

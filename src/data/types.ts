@@ -279,3 +279,25 @@ export interface InquiryContactForm {
   packaging?: string;
   message: string;
 }
+
+/* ---------- Insights / Blog ---------- */
+
+export interface InsightSection {
+  heading: string;
+  paragraphs: string[];
+}
+
+export interface Insight {
+  slug: string;
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  date: string;
+  category: string;
+  categoryZh: string;
+  readTime: string;
+  readTimeZh: string;
+  excerpt: string;
+  excerptZh: string;
+  sections: InsightSection[];
+}

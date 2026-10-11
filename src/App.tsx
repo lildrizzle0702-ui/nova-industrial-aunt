@@ -15,6 +15,8 @@ import RequestQuotePage from './pages/RequestQuotePage';
 import InquiryPage from './pages/InquiryPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ComparePage from './pages/ComparePage';
+import InsightsPage from './pages/InsightsPage';
+import InsightDetailPage from './pages/InsightDetailPage';
 
 export default function App() {
   return (
@@ -32,6 +34,8 @@ export default function App() {
             <Route path="quality" element={<QualityPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="request-quote" element={<RequestQuotePage />} />
+            <Route path="insights" element={<InsightsPage />} />
+            <Route path="insights/:slug" element={<InsightDetailPage />} />
             <Route path="inquiry" element={<InquiryPage />} />
             <Route path="compare" element={<ComparePage />} />
             <Route path="*" element={<NotFoundPage />} />
