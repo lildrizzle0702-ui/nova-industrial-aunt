@@ -84,8 +84,8 @@ export function InquiryDrawer() {
               <p className="caption">
                 {rows.length} {t('common.productsCount')} · {t('drawer.quantitiesNote')}
               </p>
-              <Link to="/inquiry" className="btn btn--accent btn--block" onClick={inquiry.closeDrawer}>
-                {t('drawer.viewQuote')}
+              <Link to="/request-quote" className="btn btn--accent btn--block" onClick={inquiry.closeDrawer}>
+                {t('common.requestQuote')}
               </Link>
             </div>
           </>

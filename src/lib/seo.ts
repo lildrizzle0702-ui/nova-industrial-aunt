@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { seo } from '../config/theme';
-import { company } from '../config/company';
-import { contact } from '../config/contact';
+import { seo, company, contact } from '../config/factory.config';
 import { useLocale } from './i18n';
 
 /** Placeholder OG/Twitter image. Replace with a real 1200×630 asset. */

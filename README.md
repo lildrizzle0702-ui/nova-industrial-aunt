@@ -1,77 +1,78 @@
-# NOVA Industrial Template
+# Factory Export Website Template
 
-Premium B2B industrial / export website template (Vite + React + TypeScript).
-Demo brand: **NOVA INDUSTRIAL** — electrical components manufacturer, 23 SKUs,
-5 product families. Everything visual and textual is config/data/media-driven;
-pages never contain brand, copy, or image paths.
+A reusable bilingual factory / B2B export website template (Vite + React + TypeScript).
 
-## Local development
+Demo brand: **NOVA INDUSTRIAL** — electrical components manufacturer.
+
+## Quick start
 
 ```bash
 npm install
 npm run dev        # http://localhost:5180
-```
-
-## Production build
-
-```bash
-npm run build      # typecheck + bundle → dist/
+npm run build      # typecheck + bundle + sitemap → dist/
 npm run preview    # serve dist/ locally
 ```
 
-## Rebrand (NOVA INDUSTRIAL → your client)
+## Rebrand for a new client
 
-Edit config/data only — no JSX changes:
+Almost everything lives in one file:
 
 | What | File |
 |---|---|
-| Brand name, wordmark, tagline | `src/config/brand.ts` |
-| Colors (theme tokens) | `src/styles/tokens.css` + `src/config/theme.ts` (keep in sync) |
-| Company facts, stats | `src/config/company.ts` |
-| Contact info | `src/config/contact.ts` |
-| Navigation / footer links | `src/config/navigation.ts` |
-| Product families | `src/config/categories.ts` |
-| Product catalogue (23 SKUs) | `src/data/products.ts` |
-| Home / quote copy, CTA | `src/config/hero.ts` |
-| Certifications, capabilities, FAQ | `src/config/certifications.ts` |
-| About story, process, milestones | `src/config/about.ts` |
-| SEO defaults, **siteUrl** | `src/config/theme.ts` → `seo.siteUrl` |
-| Favicon | `public/favicon.svg` |
+| Brand name, tagline, description | `src/config/factory.config.ts` → `brand` |
+| Company facts, factory stats | `src/config/factory.config.ts` → `company`, `factoryStats`, `statsBand` |
+| Contact info, WhatsApp, address | `src/config/factory.config.ts` → `contact` |
+| SEO: siteUrl, title, description, keywords | `src/config/factory.config.ts` → `seo` |
+| Colors / theme tokens | `src/config/factory.config.ts` → `theme` (keep in sync with `src/styles/tokens.css`) |
+| Product families | `src/config/factory.config.ts` → `categories` |
+| Certifications, capabilities, FAQ | `src/config/factory.config.ts` → `certifications`, `capabilities`, `faqs` |
+| About story, process, milestones | `src/config/factory.config.ts` → `factSheet`, `manufacturingProcess`, `milestones` |
+| Home copy, hero, CTAs | `src/config/factory.config.ts` → `hero`, `ctaBand`, `homeSections` |
+| Navigation / footer links | `src/config/factory.config.ts` → `navigation` |
+| Product catalogue | `src/config/factory.config.ts` → `products` |
 
-Also update the domain in `public/robots.txt` and `public/sitemap.xml`
-when the real domain is known.
+The old `src/config/*.ts` and `src/data/products.ts` files now re-export from `factory.config.ts`, so pages and components do not need re-wiring.
 
-## Media (client photography)
+## Service placeholders
+
+Replace these before going live:
+
+| Service | File | Placeholder |
+|---|---|---|
+| Formspree form endpoint | `src/config/thirdParty.ts` | `FORMSPREE_FORM_ID` |
+| WhatsApp number (English pages) | `src/config/thirdParty.ts` | `8613800000000` |
+| WeChat QR code (Chinese pages) | `src/config/thirdParty.ts` | `/assets/img/wechat-qr-placeholder.png` |
+| Microsoft Clarity | `src/config/thirdParty.ts` | `CLARITY_PROJECT_ID` |
+| Google Analytics 4 | `src/config/thirdParty.ts` | `GA_MEASUREMENT_ID` |
+
+## Media / photography
 
 The template ships with a deterministic SVG demo visual system.
-To switch a client to real photography:
+To switch to real photography:
 
-1. Put files under `public/assets/client/` (see `public/assets/client/README.md`
-   for the folder convention: `brand/`, `factory/`, `products/<slug>/`).
-2. Register the slots in `src/config/media.ts` and set
-   `mediaMode: 'client'`.
+1. Put files under `public/assets/client/` (see `public/assets/client/README.md`).
+2. Register slots in `src/config/media.ts` and set `mediaMode: 'client'`.
 
-Any slot left empty falls back to the demo SVG automatically — a missing
-file can never break the layout.
+Empty slots automatically fall back to the demo SVG.
 
-## Deployment (Vercel)
+## SEO
 
-- Framework preset: **Vite** — build `npm run build`, output `dist/`.
-- `vercel.json` rewrites all paths to `index.html`, so deep links like
-  `/products/schuko-socket-16a` resolve on refresh (SPA fallback).
-- Set the production domain in `src/config/theme.ts` (`seo.siteUrl`),
-  `public/robots.txt`, and `public/sitemap.xml` before going live.
+- Unique title/meta/OG/hreflang are injected per page by `src/lib/seo.ts`.
+- `npm run build` auto-generates `dist/sitemap.xml` and `dist/robots.txt` from the routes in `factory.config.ts` and `src/data/insights.ts`.
+- Set the real domain in `src/config/factory.config.ts` (`seo.siteUrl`).
 
-## Template workflow
+## Deployment
 
-```
-MASTER TEMPLATE (this repo, tag v3.0.0)
-  → Duplicate / clone
-  → Rename project to the client
-  → Edit src/config/* + src/data/* (brand, company, catalogue, copy)
-  → Edit src/config/theme.ts (colors) + public/favicon.svg
-  → Add client photos to public/assets/client/ + src/config/media.ts
-  → Update robots.txt / sitemap.xml / seo.siteUrl with the real domain
-  → npm run build
-  → Deploy
-```
+### GitHub Pages
+
+- Build: `npm run build`
+- Publish folder: `dist/`
+- `base` in `vite.config.ts` is set to `/nova-industrial-template/`; change it to `/` for a custom domain.
+- `dist/404.html` is copied from `dist/index.html` after build so deep links work on refresh.
+
+### Cloudflare Pages
+
+- Build command: `npm run build`
+- Build output: `dist/`
+- Set `base` in `vite.config.ts` to `/` for root hosting.
+- `_headers` and `_redirects` files in `dist/` are generated/ignored as needed.
