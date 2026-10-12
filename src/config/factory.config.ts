@@ -72,26 +72,26 @@ export const statsBand: FactoryStat[] = [
 /* ---------- contact.ts ---------- */
 
 export const contact: ContactConfig = {
-  email: '{{EMAIL_PLACEHOLDER}}',
-  salesEmail: '{{SALES_EMAIL_PLACEHOLDER}}',
-  phone: '{{PHONE_PLACEHOLDER}}',
-  phoneHref: '{{PHONE_HREF_PLACEHOLDER}}',
-  whatsapp: '{{WHATSAPP_PLACEHOLDER}}',
-  whatsappHref: '{{WHATSAPP_HREF_PLACEHOLDER}}',
-  addressLines: ['{{ADDRESS_LINE_1_PLACEHOLDER}}', '{{ADDRESS_LINE_2_PLACEHOLDER}}', '{{ADDRESS_LINE_3_PLACEHOLDER}}'],
-  addressLinesZh: ['{{ADDRESS_LINE_1_ZH_PLACEHOLDER}}', '{{ADDRESS_LINE_2_ZH_PLACEHOLDER}}', '{{ADDRESS_LINE_3_ZH_PLACEHOLDER}}'],
-  country: '{{COUNTRY_PLACEHOLDER}}',
-  countryZh: '{{COUNTRY_ZH_PLACEHOLDER}}',
-  businessHours: '{{BUSINESS_HOURS_PLACEHOLDER}}',
-  businessHoursZh: '{{BUSINESS_HOURS_ZH_PLACEHOLDER}}',
-  responseTime: '{{RESPONSE_TIME_PLACEHOLDER}}',
-  responseTimeZh: '{{RESPONSE_TIME_ZH_PLACEHOLDER}}',
+  email: 'info@novaindustrial.com',
+  salesEmail: 'sales@novaindustrial.com',
+  phone: '+86 577 8888 0400',
+  phoneHref: '+8657788880400',
+  whatsapp: '+86 138 0677 0400',
+  whatsappHref: 'https://wa.me/8613806770400',
+  addressLines: ['No. 88 Binhai Industrial Road', 'Economic Development Zone', 'Wenzhou, Zhejiang 325000'],
+  addressLinesZh: ['滨海工业路 88 号', '经济开发区', '温州市 浙江省 325000'],
+  country: 'China',
+  countryZh: '中国',
+  businessHours: 'Mon–Sat, 8:30–18:00 (GMT+8)',
+  businessHoursZh: '周一至周六 8:30–18:00（北京时间）',
+  responseTime: 'within one business day',
+  responseTimeZh: '一个工作日内',
 };
 
 /* ---------- theme.ts ---------- */
 
 export const seo: SeoConfig = {
-  siteUrl: '{{SITE_URL_PLACEHOLDER}}',
+  siteUrl: 'https://lildrizzle0702-ui.github.io/nova-industrial-aunt/',
   siteName: 'NOVA INDUSTRIAL',
   titleTemplate: '%s — NOVA INDUSTRIAL',
   defaultTitle: 'NOVA INDUSTRIAL — Electrical Components Manufacturer',

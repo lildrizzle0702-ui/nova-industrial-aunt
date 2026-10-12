@@ -45,7 +45,7 @@ function sitemapRobotsPlugin() {
 
 // GitHub Pages project site uses a sub-path; keep this for the current deployment target.
 export default defineConfig({
-  base: '/nova-industrial-template/',
+  base: '/nova-industrial-aunt/',
   plugins: [react(), sitemapRobotsPlugin()],
   server: {
     port: 5180,
