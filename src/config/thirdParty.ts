@@ -10,6 +10,9 @@ export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/FORMSPREE_FORM_ID';
 /** WhatsApp number for the floating contact button (English pages). Include country code, no +. */
 export const WHATSAPP_NUMBER = '8613800000000';
 
+/** Preset inquiry message appended to the WhatsApp wa.me deep link. */
+export const WHATSAPP_MESSAGE = 'Hi, I visited your website and would like a quotation for your products.';
+
 /** WeChat QR code image URL/path for the floating contact button (Chinese pages). */
 export const WECHAT_QR_PLACEHOLDER = '/assets/img/wechat-qr-placeholder.png';
 

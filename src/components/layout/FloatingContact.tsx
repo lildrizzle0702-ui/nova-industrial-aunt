@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocale } from '../../lib/i18n';
-import { WHATSAPP_NUMBER, WECHAT_QR_PLACEHOLDER } from '../../config/thirdParty';
+import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE, WECHAT_QR_PLACEHOLDER } from '../../config/thirdParty';
 
 export function FloatingContact() {
   const { t, locale } = useLocale();
@@ -33,7 +33,7 @@ export function FloatingContact() {
 
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`}
       className="floating-contact floating-contact--link"
       target="_blank"
       rel="noreferrer"

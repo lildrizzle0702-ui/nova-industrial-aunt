@@ -33,6 +33,8 @@ Almost everything lives in one file:
 
 The old `src/config/*.ts` and `src/data/products.ts` files now re-export from `factory.config.ts`, so pages and components do not need re-wiring.
 
+See `src/config/factory.config.aunt.ts.example` for a fully filled example configuration.
+
 ## Service placeholders
 
 Replace these before going live:
@@ -45,6 +47,13 @@ Replace these before going live:
 | Microsoft Clarity | `src/config/thirdParty.ts` | `CLARITY_PROJECT_ID` |
 | Google Analytics 4 | `src/config/thirdParty.ts` | `GA_MEASUREMENT_ID` |
 
+## Formspree setup
+
+1. Create a free form at https://formspree.io/.
+2. Copy the form ID (the part after `/f/` in the endpoint URL).
+3. Replace `FORMSPREE_FORM_ID` in `src/config/thirdParty.ts` with your real ID.
+4. The form accepts these fields: `name`, `company`, `email`, `country`, `certification`, `packaging`, `message`, `summary`, `_subject`.
+
 ## Media / photography
 
 The template ships with a deterministic SVG demo visual system.
@@ -54,6 +63,28 @@ To switch to real photography:
 2. Register slots in `src/config/media.ts` and set `mediaMode: 'client'`.
 
 Empty slots automatically fall back to the demo SVG.
+
+## Image replacement map
+
+The current `public/` directory contains only `favicon.svg`; all other visuals are SVG placeholders. Replace these filenames to add real photography:
+
+| Recommended filename | Page / section |
+|---|---|
+| `public/assets/img/factory-workshop-01.jpg` | Factory Tour — injection molding floor |
+| `public/assets/img/factory-workshop-02.jpg` | Factory Tour — QC laboratory |
+| `public/assets/img/factory-workshop-03.jpg` | Factory Tour — tooling room |
+| `public/assets/img/factory-workshop-04.jpg` | Factory Tour — raw-material warehouse |
+| `public/assets/img/factory-workshop-05.jpg` | Factory Tour — export packing line |
+| `public/assets/img/factory-workshop-06.jpg` | Factory Tour — container loading bay |
+| `public/assets/img/cert-iso9001.jpg` | Quality / Certifications — ISO 9001 scan |
+| `public/assets/img/cert-ce.jpg` | Quality / Certifications — CE scan |
+| `public/assets/img/cert-rohs.jpg` | Quality / Certifications — RoHS scan |
+| `public/assets/img/cert-ukca.jpg` | Quality / Certifications — UKCA scan |
+| `public/assets/img/wechat-qr-placeholder.png` | Chinese floating button — WeChat QR |
+| `public/assets/img/og-placeholder.png` | Social sharing / OG image |
+| `public/favicon.svg` | Browser tab icon |
+
+Product photos are registered per slug in `src/config/media.ts` → `clientMedia.products`.
 
 ## SEO
 
