@@ -35,6 +35,13 @@ The old `src/config/*.ts` and `src/data/products.ts` files now re-export from `f
 
 See `src/config/factory.config.aunt.ts.example` for a fully filled example configuration.
 
+### New-client launch checklist
+
+1. Replace `{{SITE_URL_PLACEHOLDER}}` in `src/config/factory.config.ts` (`seo.siteUrl`) with the real domain, e.g. `https://xxx.github.io/仓库名/`.
+2. Replace the `{{..._PLACEHOLDER}}` contact values in the same file.
+3. Update `src/config/thirdParty.ts` with real Formspree, WhatsApp, Clarity, and GA4 IDs.
+4. Add real photos under `public/assets/client/` and set `mediaMode: 'client'` in `src/config/media.ts`.
+
 ## Service placeholders
 
 Replace these before going live:

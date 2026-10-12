@@ -91,7 +91,7 @@ export const contact: ContactConfig = {
 /* ---------- theme.ts ---------- */
 
 export const seo: SeoConfig = {
-  siteUrl: 'https://www.novaindustrial.example',
+  siteUrl: '{{SITE_URL_PLACEHOLDER}}',
   siteName: 'NOVA INDUSTRIAL',
   titleTemplate: '%s — NOVA INDUSTRIAL',
   defaultTitle: 'NOVA INDUSTRIAL — Electrical Components Manufacturer',
